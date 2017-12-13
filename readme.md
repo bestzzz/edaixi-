@@ -1,4 +1,4 @@
-#### 获取一级大类
+#### 获取一级大类~
 ```
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:3000';
