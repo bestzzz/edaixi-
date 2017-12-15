@@ -1,0 +1,77 @@
+下周我们讲redux+路由
+redux官网文档
+英文 http://redux.js.org/ 
+
+中文 http://www.redux.org.cn/ 
+
+
+http://huziketang.com/books/react/ 
+
+第三阶段
+
+视频教程在线观看地址
+http://www.ablesky.com/org/510_d_381963_0_-1_-1_0_1#orgTab 
+
+实战项目
+https://github.com/zhufengnodejs/zhufengketangapp 
+第三方登录的视频 链接：http://pan.baidu.com/s/1hsCfpfm 
+
+ 密码：vdyl
+
+
+http://www.zhufengpeixun.cn/docs/html/react%E8%AF%BE%E7%A8%8B/5.redux%E4%B8%AD%E9%97%B4%E4%BB%B6.html 
+
+张仁阳老师 2017-12-07 13:01:46
+http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html 
+
+中间件
+http://www.cnblogs.com/canfoo/p/6119446.html 
+
+
+http://reacttraining.cn/ 
+
+张仁阳老师 2017-12-10 9:26:00
+路由官网
+张仁阳老师 2017-12-10 9:26:46
+http://www.zhufengpeixun.cn/docs/html/react%E8%AF%BE%E7%A8%8B/3.react%E8%B7%AF%E7%94%B1.html 
+
+https://reactcommunity.org/react-transition-group/
+
+
+面试题
+https://www.zybuluo.com/KinKin/note/978313 
+
+https://www.zybuluo.com/KinKin/note/976838
+
+http://www.cnblogs.com/diasa-fly/category/1073858.html
+
+动画
+https://reactcommunity.org/react-transition-group/ 
+
+https://codesandbox.io/s/y26rj99yov?from-embed
+
+抓包工具
+http://www.cnblogs.com/LOVEYU/p/8034359.html?utm_source=gold_browser_extension 
+https://www.charlesproxy.com/
+
+可以随意左右滑动
+https://github.com/schovi/react-iscroll
+、react-iscroll
+https://github.com/wxxfe/react-iscroll 
+
+手机端卡顿解决办法：参数
+disablePointer: true，disableTouch:false,disableMouse:fasle   
+这是我原先的笔记
+倾情奉献
+
+
+项目介绍 可以参考这个 老师说这里面有打包以后，js不合并
+https://github.com/canfoo/react-taopiaopiao
+
+react-router-redux:
+https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
+
+webpack 配置
+
+https://doc.webpack-china.org/configuration/dev-server/#devserver-historyapifallback
+

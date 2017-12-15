@@ -1,43 +1,49 @@
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-  //指定入口文件
-  entry: './src/index.js',
-  //指定输出的位置
-  output: {
-    //输出的路径，必须放一个绝对路径
-    path: path.resolve('build'),
-    //打包后的文件名
-    filename: 'bundle.js'
-  },
-  //配置模块
-  module: {
-    //转译的规则 什么样的文件，用什么样的预设来进行转译
-    rules: [
-      //如果加载的模块的文件名是以.js结尾的话，用babel来加载
-      //还要为babel配置三个预设,分别编译es6 es7 react
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        //不扫描node_modules里面的文件
-        exclude:/node_modules/,
-        query: {
-        presets: ["es2015", "stage-0", "react"]
-      }
-      },
-      //如果要加载的模块是以.css结尾的话，使用css style loader
-      {test: /\.css$/, loaders: ["style-loader", "css-loader"]},
-      {
-        test: /\.(jpg|png|gif|eot|svg|woff|woff2|ttf)$/,
-        loader: 'url-loader'
-      }
+    entry: "./src/index.js",
+    output: {
+        path: path.resolve('build'),
+        filename: "bundle.js"
+    },
+    //可以配置一个源代码到打包后代码的一个映射，可以在控制台看到源代码代码报错的行数，而非bundle.js里的行数
+    devtool: "cheap-module-source-map",
+    devServer: {
+        historyApiFallback:true, //因为是单页面应用，所以在刷新url时，浏览器默认请求的是新的页面，将会获取不到，配置这个就会每次都会重新访问首页
+        //如果请求路径是以/api开头的话，会由3000这个服务来进行解析处理，这个代理不是很好用
+        proxy: {
+            "/api": "http://localhost:3000"
+        }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    "presets": [
+                        "env", "react"
+                    ],
+                    "plugins": [
+                        "transform-object-rest-spread",
+                        "transform-class-properties"
+                    ]
+                }
+            },
+            {
+                test: /.less$/,
+                loaders: ["style-loader", "css-loader", "less-loader"]
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                loader: 'url-loader'
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'index.html'
+        })
     ]
-  },
-  //插件
-  plugins: [
-    //用来自动产出html文件,并且向里面插入打包后的JS文件
-    new HtmlWebpackPlugin({
-      template: './index.html'
-    })
-  ]
 }
