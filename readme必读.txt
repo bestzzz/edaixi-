@@ -6,11 +6,6 @@
 
 保证一点：无论何时拉取?master分支进行启动，都要是一个能运行的版本
 
-建立一个空项目只填项目名,然后到这个页面,本地提交到历史区以后,执行这2行代码就提交到服务器上了
-git remote add origin https://github.com/killkey/edaixi-.git
-git push -u origin master
- 
-
 
  白天写代码之前更新一下 git pull
   1  git init
