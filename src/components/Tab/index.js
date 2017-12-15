@@ -3,7 +3,7 @@ export default class Tab extends Component{
     render(){
         return (
             <div>
-
+                test
             </div>
         )
     }

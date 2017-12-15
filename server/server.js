@@ -8,15 +8,15 @@ let writeP = util.promisify(fs.writeFile);
 
 async function read(url, cb) {
     let result = await readP(url);
-    if(result){
+    if (result) {
         cb(result);
-    }else {
+    } else {
         cb([])
     }
 }
 
-async function write(url,result,cb) {
-    await writeP(url,JSON.stringify(result));
+async function write(url, result, cb) {
+    await writeP(url, JSON.stringify(result));
     cb();
 }
 
@@ -67,20 +67,69 @@ app.get('/type', function (req, res) {
 app.get('/comments', function (req, res) {
     //列表页显示 pageIndex第几页，perPage每页显示几条
     let {pageIndex, perPage} = req.query;
-    read('./mock/comments.json',function (comments) {
+    read('./mock/comments.json', function (comments) {
         let coms = JSON.parse(comments).slice((pageIndex - 1) * perPage, perPage * pageIndex);
         res.json(coms);
     })
-})
+});
+//添加评论
 app.post('/comment', function (req, res) {
-    let comment=req.body;
-    read('./mock/comments.json',function (comments) {
-        let comments=JSON.parse(comments);
-        comments.ID=comments.length>0?comments[comments.length-1].ID+1:1;
-        comments.time=Date.now();
-        comments=[...comments,comment];
-        write('./mock/comments.json',comments,function () {
+    let comment = req.body;
+    let url = './mock/comments.json';
+    read(url, function (comments) {
+        comments = JSON.parse(comments);
+        comment.ID = comments.length > 0 ? comments[comments.length - 1].ID + 1 : 1;
+        comment.time = new Date;
+        comments = [...comments, comment];
+        write(url, comments, function () {
             res.json(comment);
         })
+    })
+});
+// 注册
+app.post('/user', function (req, res) {
+    let user = req.body;
+    let url = './mock/users.json';
+    read(url, function (users) {
+        users = JSON.parse(users);
+        let oldUser = users.find(item => item.username == user.username);
+        if (oldUser) {
+            res.json({code: 1, err: '用户名重复'});
+        } else {
+            user.userId = users.length ? users[users.length - 1].userId + 1 : 1;
+            user.time = new Date();
+            users.push(user);
+            write(url, users, function () {
+                res.json({code: 0, success: '注册成功'})
+            })
+        }
+    })
+});
+// 登陆
+app.get('/login', function (req, res) {
+    let user = req.body;
+    let url = './mock/users.json';
+    read(url, function (users) {
+        users = JSON.parse(users);
+        let oldUser = users.find(item => item.username == user.username && item.password == user.password);
+        if (oldUser) {
+            req.session.user = oldUser;
+            res.json({code: 0, success: '登陆成功', user: oldUser});
+        } else {
+            res.json({code: 1, err: '用户名或密码错误'})
+        }
+    })
+})
+//获取某个用户的订单列表
+app.get('/orders', function (req, res) {
+    let {userId} = req.query;
+    let url = './mock/orderList.json';
+    read(url, function (orders) {
+        orders = JSON.parse(orders);
+        let oldUser = orders.filter(item => item.userId == userId);
+        if (oldUser) {
+            req.session.user = oldUser;
+            res.json({code: 0, success: '登陆成功', user: oldUser});
+        }
     })
 })
