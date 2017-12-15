@@ -75,12 +75,13 @@ app.get('/comments', function (req, res) {
 //添加评论
 app.post('/comment', function (req, res) {
     let comment = req.body;
-    read('./mock/comments.json', function (comments) {
+    let url='./mock/comments.json';
+    read(url, function (comments) {
         comments = JSON.parse(comments);
-        comments.ID = comments.length > 0 ? comments[comments.length - 1].ID + 1 : 1;
-        comments.time = new Date;
+        comment.ID = comments.length > 0 ? comments[comments.length - 1].ID + 1 : 1;
+        comment.time = new Date;
         comments = [...comments, comment];
-        write('./mock/comments.json', comments, function () {
+        write(url, comments, function () {
             res.json(comment);
         })
     })
