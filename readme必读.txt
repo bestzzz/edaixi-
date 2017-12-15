@@ -1,4 +1,6 @@
 克隆项目到本地 git clone https://github.com/killkey/edaixi-.git
+因为没有node_modules,文件，所以拉下来以后，打开项目 到当前目录下 执行 npm i 创建node_modules
+然后运行npm run dev 看看能不能运行起来
 
 ！！！ 如果你要修改共用的代码的话，一定要提前 公告一下
 
