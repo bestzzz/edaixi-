@@ -75,7 +75,7 @@ app.get('/comments', function (req, res) {
 //添加评论
 app.post('/comment', function (req, res) {
     let comment = req.body;
-    let url='./mock/comments.json';
+    let url = './mock/comments.json';
     read(url, function (comments) {
         comments = JSON.parse(comments);
         comment.ID = comments.length > 0 ? comments[comments.length - 1].ID + 1 : 1;
@@ -107,16 +107,29 @@ app.post('/user', function (req, res) {
 });
 // 登陆
 app.get('/login', function (req, res) {
-     let user = req.body;
+    let user = req.body;
     let url = './mock/users.json';
     read(url, function (users) {
         users = JSON.parse(users);
         let oldUser = users.find(item => item.username == user.username && item.password == user.password);
         if (oldUser) {
-            req.session.user=oldUser;
-            res.json({code: 0, success: '登陆成功', user:oldUser});
+            req.session.user = oldUser;
+            res.json({code: 0, success: '登陆成功', user: oldUser});
         } else {
             res.json({code: 1, err: '用户名或密码错误'})
+        }
+    })
+})
+//获取某个用户的订单列表
+app.get('/orders', function (req, res) {
+    let {userId} = req.query;
+    let url = './mock/orderList.json';
+    read(url, function (orders) {
+        orders = JSON.parse(orders);
+        let oldUser = orders.filter(item => item.userId == userId);
+        if (oldUser) {
+            req.session.user = oldUser;
+            res.json({code: 0, success: '登陆成功', user: oldUser});
         }
     })
 })
