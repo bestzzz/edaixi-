@@ -72,11 +72,12 @@ app.get('/comments', function (req, res) {
         res.json(coms);
     })
 })
-app.post('/comments', function (req, res) {
+app.post('/comment', function (req, res) {
     let comment=req.body;
     read('./mock/comments.json',function (comments) {
         let comments=JSON.parse(comments);
         comments.ID=comments.length>0?comments[comments.length-1].ID+1:1;
+        comments.time=Date.now();
         comments=[...comments,comment];
         write('./mock/comments.json',comments,function () {
             res.json(comment);

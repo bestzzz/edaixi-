@@ -38,8 +38,8 @@ export let typeTwoOrProducts=(typeId)=>{
 
  添加评论
  ```
- <!--  comment 是一个对象格式为{}-->
+ <!--  comment 是一个对象格式为{userId:,typeId:,content:,tel}-->
  export let addComment = (comment) => {
-   return axios.post(`/comments`,comment);
+   return axios.post(`/comment`,comment);
  };
  ```
