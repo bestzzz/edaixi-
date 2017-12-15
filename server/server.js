@@ -122,14 +122,30 @@ app.get('/login', function (req, res) {
 })
 //获取某个用户的订单列表
 app.get('/orders', function (req, res) {
-    let {userId} = req.query;
+    let {userid} = req.query;
     let url = './mock/orderList.json';
     read(url, function (orders) {
         orders = JSON.parse(orders);
-        let oldUser = orders.filter(item => item.userId == userId);
-        if (oldUser) {
-            req.session.user = oldUser;
-            res.json({code: 0, success: '登陆成功', user: oldUser});
-        }
+        res.json(orders.filter(item => item.userId == userid));
+    })
+})
+
+//获取某个用户关联的地址
+app.get('/adresses', function (req, res) {
+    let {userid} = req.query;
+    let url = './mock/adresses.json';
+    read(url, function (adresses) {
+        adresses = JSON.parse(adresses);
+        res.json(adresses.filter(item => item.userId == userid));
+    })
+})
+
+//获取某个订单关联的地址
+app.get('/adress', function (req, res) {
+    let {addressId} = req.query;
+    let url = './mock/adresses.json';
+    read(url, function (adresses) {
+        adresses = JSON.parse(adresses);
+        res.json(adresses.find(item => item.addressId == addressId));
     })
 })
