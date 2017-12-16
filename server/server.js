@@ -28,6 +28,7 @@ app.use(session({
 }));
 let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
+//接收跨域请求
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "http://localhost:8080");
     res.header('Access-Control-Allow-Headers', "Content-Type");
