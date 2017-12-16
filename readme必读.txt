@@ -16,6 +16,7 @@
 代码每天晚上提交一下如上操作 记得切换到自己的分支
 
   创建并切换到分支first
+  切换分支前先看一下有哪些分支 git branch -a 然后复制分支名切换分支，减少错误
   git checkout -b first
   git add -A
   git commit -m "init"
