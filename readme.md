@@ -32,8 +32,8 @@ export let typeTwoOrProducts=(typeId)=>{
  export let comments=(pageIndex，perPage)=>{
    return axios.get(`/comments?pageIndex=${pageIndex}&perPage=${perPage}`);
  }
- 格式如下
- [{"ID":11,"userId":2,"typeId":5,"content":"服务很好呀！！","tel":"13146593373","time":"2017-12-11"},{"ID":12,"userId":1,"typeId":5,"content":"服务很好呀！！","tel":"13146593373","time":"2017-12-11"}]
+ 格式如下http://localhost:3000/comments?pageIndex=2&perPage=5
+{"coms":[{"ID":6,"userId":1,"typeId":5,"content":"服务很好呀！！","tel":"1314659333","time":"2017-12-1"},{"ID":7,"userId":1,"typeId":5,"content":"服务很好呀！！","tel":"1314659333","time":"2017-12-1"},{"ID":8,"userId":3,"typeId":5,"content":"服务很好呀！！","tel":"1314659333","time":"2017-12-1"},{"ID":9,"userId":2,"typeId":5,"content":"服务很好呀！！","tel":"1314659333","time":"2017-12-1"},{"ID":10,"userId":1,"typeId":5,"content":"服务很好呀！！","tel":"13146593373","time":"2017-12-11"}],"hasMore":true}
  ```
 
  - 添加评论
