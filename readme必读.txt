@@ -9,20 +9,18 @@
 保证一点：无论何时拉取?master分支进行启动，都要是一个能运行的版本
 
 
- 白天写代码之前更新一下 git pull
-  1  git init
-  2  git add -A
-  3  git commit -m 'init'
-  4  git remote add origin https://github.com/killkey/edaixi-.git
-  5  git push -u origin master
-  -----以上是一个简单分支
+白天写代码之前在master分支下更新一下 git pull 如果有更新需合并到自己的分支用 git merge master 然后把冲突的地方自行修改
+
+
 
 代码每天晚上提交一下如上操作 记得切换到自己的分支
 
-  创建并切换到分支first
-  git checkout -b first
+  创建并切换到分支first git checkout -b first
+  切换分支前先看一下有哪些分支 git branch -a 然后复制分支名切换分支，减少错误
+  git checkout first 切换分支
   git add -A
   git commit -m "init"
+  git push origin first --提交到自己的分支
 
 --------------------以下必须是一个可运行的程序才可执行
   将first分支内容合并到master：
@@ -30,6 +28,18 @@
   git checkout master
   git merge first
   git push -u origin master
+
+
+
+
+可以不看 这是一个分支的简单情况
+----------
+  1  git init
+  2  git add -A
+  3  git commit -m 'init'
+  4  git remote add origin https://github.com/killkey/edaixi-.git
+  5  git push -u origin master
+-----以上是一个简单分支
 
 
 
