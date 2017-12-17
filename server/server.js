@@ -70,7 +70,8 @@ app.get('/comments', function (req, res) {
     let {pageIndex, perPage} = req.query;
     read('./mock/comments.json', function (comments) {
         let coms = JSON.parse(comments).slice((pageIndex - 1) * perPage, perPage * pageIndex);
-        res.json(coms);
+        let hasMore=(pageIndex - 1) * perPage+parseInt(perPage)<JSON.parse(comments).length
+        res.json({coms,hasMore});
     })
 });
 
