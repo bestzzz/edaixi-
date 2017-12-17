@@ -36,14 +36,14 @@ export let typeTwoOrProducts=(typeId)=>{
  [{"ID":11,"userId":2,"typeId":5,"content":"服务很好呀！！","tel":"13146593373","time":"2017-12-11"},{"ID":12,"userId":1,"typeId":5,"content":"服务很好呀！！","tel":"13146593373","time":"2017-12-11"}]
  ```
 
- 添加评论
+ - 添加评论
  ```
  <!--  comment 是一个对象格式为{userId:,typeId:,content:,tel}-->
  export let addComment = (comment) => {
    return axios.post(`/comment`,comment);
  };
  ```
-注册
+- 注册
 ```
  user是一个对象{username:"fly1",password:"111111"}
  export let Reg = (user) => {
@@ -52,7 +52,7 @@ export let typeTwoOrProducts=(typeId)=>{
  成功返回：{"code":0,"success":"注册成功"}
  失败返回：{code: 1, err: '用户名重复'}
 ```
-登陆
+- 登陆
 ```
 user是一个对象{username:"fly1",password:"111111"}
  export let login = (user) => {
@@ -60,4 +60,73 @@ user是一个对象{username:"fly1",password:"111111"}
  };
  成功返回：{"code":0,"success":"登陆成功","user":{"username":"fly1","password":"111111","userId":2,"time":"2017-12-15T11:48:24.429Z"}}
  失败返回：{"code":1,"err":"用户名或密码错误"}
+```
+- 获取某个用户的订单列表
+```
+export let orders = (userid) => {
+   return axios.get(`/orders?userid=${userid}`);
+ };
+返回格式：
+[
+            {
+                "userId": 1,
+                "orderId": 1,
+                "orderProduct": [{"proId": 1, "sum": 1}, {"proId": 2, "sum": 4}],
+                "orderPriceSum": 100,
+                "addressId": 1,
+                "time": "2017-12-07"
+            },
+            {
+                "userId": 1,
+                "orderId": 2,
+                "orderProduct": [{"proId": 1, "sum": 1}, {"proId": 2, "sum": 4}],
+                "orderPriceSum": 100,
+                "addressId": 1,
+                "time": "2017-12-07"
+            }
+        ]
+```
+- 获取某个用户关联的地址
+```
+export let adresses = (userid) => {
+   return axios.get(`/adresses?userid=${userid}`);
+ };
+ 返回格式为一个数组：
+  [{
+             "ID": 1,
+             "userId": 1,
+             "province": "北京市",
+             "city": "北京市",
+             "address1": "通州区",
+             "address2": "新潮嘉园3期",
+             "name": "李唐菲",
+             "tel": "13146593373",
+             "sex": "女"
+         }, {
+             "ID": 2,
+             "userId": 1,
+             "province": "河南省",
+             "city": "郑州市",
+             "address1": "海淀区",
+             "address2": "新潮嘉园3期",
+             "name": "左钊",
+             "tel": "13146593374",
+             "sex": "男"
+         }]
+```
+- 获取某个订单关联的地址
+```
+export let address = (addressid) => {
+   return axios.get(`/address?addressid=${addressid}`);
+ };
+ 返回内容是一个对象：
+ {"ID":1,"userId":1,"province":"北京市","city":"北京市","address1":"通州区","address2":"新潮嘉园3期","name":"李唐菲","tel":"13146593373","sex":"女"}
+```
+
+- 提交一个订单
+```
+order={userId:3,orderProduct:[{proId:1,sum:1},{proId:2,sum:4}],orderPriceSum:100,addressId:1}
+export let order = (order) => {
+   return axios.post('/order',order);
+ };
 ```

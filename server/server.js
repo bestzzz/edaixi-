@@ -28,6 +28,7 @@ app.use(session({
 }));
 let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
+//接收跨域请求
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "http://localhost:8080");
     res.header('Access-Control-Allow-Headers', "Content-Type");
@@ -72,6 +73,7 @@ app.get('/comments', function (req, res) {
         res.json(coms);
     })
 });
+
 //添加评论
 app.post('/comment', function (req, res) {
     let comment = req.body;
@@ -105,6 +107,7 @@ app.post('/user', function (req, res) {
         }
     })
 });
+
 // 登陆
 app.get('/login', function (req, res) {
     let user = req.body;
@@ -119,17 +122,66 @@ app.get('/login', function (req, res) {
             res.json({code: 1, err: '用户名或密码错误'})
         }
     })
-})
+});
+
 //获取某个用户的订单列表
 app.get('/orders', function (req, res) {
-    let {userId} = req.query;
+    let {userid} = req.query;
     let url = './mock/orderList.json';
     read(url, function (orders) {
         orders = JSON.parse(orders);
-        let oldUser = orders.filter(item => item.userId == userId);
-        if (oldUser) {
-            req.session.user = oldUser;
-            res.json({code: 0, success: '登陆成功', user: oldUser});
-        }
+        res.json(orders.filter(item => item.userId == userid));
+    })
+<<<<<<< HEAD
+});
+=======
+});
+//提交一个订单
+app.post('/order',function (req,res) {
+    let order = req.body;
+    let url = './mock/orderList.json';
+    read(url, function (orders) {
+        orders = JSON.parse(orders);
+        order.ID = orders.length > 0 ? orders[orders.length - 1].orderId + 1 : 1;
+        order.time = new Date;
+        orders = [...orders, order];
+        write(url, orders, function () {
+            res.json(order);
+        })
+    })
+})
+//获取某个用户关联的地址
+app.get('/adresses', function (req, res) {
+    let {userid} = req.query;
+    let url = './mock/adresses.json';
+    read(url, function (adresses) {
+        adresses = JSON.parse(adresses);
+        res.json(adresses.filter(item => item.userId == userid));
     })
 });
+
+//获取某个订单关联的地址
+app.get('/address', function (req, res) {
+    let {addressid} = req.query;
+    let url = './mock/adresses.json';
+    read(url, function (adresses) {
+        adresses = JSON.parse(adresses);
+        res.json(adresses.find(item => item.ID == addressid));
+    })
+});
+
+//增加一个地址
+app.post('/address',function (req,res) {
+    let address = req.body;
+    let url = './mock/adresses.json';
+    read(url, function (adresses) {
+        adresses = JSON.parse(adresses);
+        address.ID = adresses.length > 0 ? adresses[adresses.length - 1].ID + 1 : 1;
+        address.time = new Date;
+        adresses = [...adresses, address];
+        write(url, adresses, function () {
+            res.json(address);
+        })
+    })
+})
+>>>>>>> origin
