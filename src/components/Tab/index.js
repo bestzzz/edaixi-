@@ -10,7 +10,7 @@ export default class Tab extends Component{
                     <i className="iconfont icon-icon_washer "></i>
                     <span>首页</span>
                 </NavLink>
-                <NavLink to="/order">
+                <NavLink to="/orders">
                     <i className="iconfont icon-nav-order"></i>
                     <span>订单</span>
                 </NavLink>
