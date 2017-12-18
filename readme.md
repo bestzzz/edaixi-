@@ -61,6 +61,28 @@ user是一个对象{username:"fly1",password:"111111"}
  成功返回：{"code":0,"success":"登陆成功","user":{"username":"fly1","password":"111111","userId":2,"time":"2017-12-15T11:48:24.429Z"}}
  失败返回：{"code":1,"err":"用户名或密码错误"}
 ```
+- 退出登录
+```
+export let logout = () => {
+   return axios.get('/logout');
+ };
+ 返回：{code:0,success:'退出成功'}
+```
+- 个人中心页面每次请求验证session在不在
+```
+export let validate = () => {
+   return axios.get('/validate');
+ };
+ 如果存在返回 {code:0,user}
+ 不存在返回 {code:1}
+```
+- 上传头像
+```
+export let uploadImge = () => {
+   return axios.post('/uploadImge');
+ };
+ 返回：{code: 0}上传成功
+```
 - 获取某个用户的订单列表
 ```
 export let orders = (userid) => {
