@@ -132,9 +132,6 @@ app.get('/orders', function (req, res) {
         orders = JSON.parse(orders);
         res.json(orders.filter(item => item.userId == userid));
     })
-<<<<<<< HEAD
-});
-=======
 });
 //提交一个订单
 app.post('/order',function (req,res) {
@@ -183,5 +180,4 @@ app.post('/address',function (req,res) {
             res.json(address);
         })
     })
-})
->>>>>>> origin
+});
