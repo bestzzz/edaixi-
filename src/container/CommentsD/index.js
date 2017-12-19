@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import './index.less'
-export default class InforD extends Component{
+export default class Comments extends Component{
     constructor(){
         super();
-        this.state=[
+        this.state={
+            comments:[
             {
                 title:'北京用户：183****2973',
                 comment:'一直他们家的服务，很不错，很专业',
@@ -79,13 +80,16 @@ export default class InforD extends Component{
                 comment:'一直他们家的服务，很不错，很专业',
                 sub:'洗鞋服务  2017.10.8'
             }
-        ]
+        ]}
+
     }
+
     render(){
         return (
-            <div>
+            <div className="comments">
+
                 {
-                    this.state.map((item,index)=>(
+                    this.state.comments.map((item,index)=>(
                         <ul key={index}>
                             <li className="title">{item.title}</li>
                             <p></p>
