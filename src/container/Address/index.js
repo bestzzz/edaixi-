@@ -9,23 +9,22 @@ export default class Address extends Component {
             <div className='usual-address'>
                 <NavHeader title='常用地址' show={true}/>
                 <div className='white'>
-                    <div className='info'>
+                    <Link to='/addadress' className='info'>
                         <span>姓名</span>
                         <span>1888888888</span>
                         <p className='address'>深圳市南山区科技园南区R2-B三楼步步高哈哈哈哈(收)</p>
                         <span className='arrow'> &gt; </span>
-                    </div>
+                    </Link>
                 </div>
                 <div className='white'>
-                    <div className='info'>
+                    <Link to='/addadress' className='info'>
                         <span>姓名</span>
                         <span>1888888888</span>
                         <p className='address'>深圳市南山区科技园南区R2-B三楼步步高哈哈哈哈(收)</p>
                         <span className='arrow'> &gt; </span>
-                    </div>
+                    </Link>
                 </div>
                 <div className="add"> <Link to='/addadress'>+ 添加</Link> </div>
-
             </div>
         )
     }
