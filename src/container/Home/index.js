@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import HomeSwiper from "./HomeSwiper/index";
 import './index.less'
 import NavHeader from '../../components/NavHeader/index'
+import HomeClean from "./HomeClean/index";
 export default class Home extends Component{
     componentDidMount(){
         this.downRefresh(this.content)
@@ -45,6 +46,7 @@ export default class Home extends Component{
             <div ref={content=>this.content=content} className="main">
                 <div className="logo"></div>
               <HomeSwiper/>
+                <HomeClean/>
             </div>
         )
     }

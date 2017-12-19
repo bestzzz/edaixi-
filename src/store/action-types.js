@@ -1,0 +1,1 @@
+export let HOME_TYPES='HOME_TYPES'
