@@ -56,7 +56,7 @@ export let typeTwoOrProducts=(typeId)=>{
 ```
 user是一个对象{username:"fly1",password:"111111"}
  export let login = (user) => {
-   return axios.get(`/login`,user);
+   return axios.post(`/login`,user);
  };
  成功返回：{"code":0,"success":"登陆成功","user":{"username":"fly1","password":"111111","userId":2,"time":"2017-12-15T11:48:24.429Z"}}
  失败返回：{"code":1,"err":"用户名或密码错误"}
