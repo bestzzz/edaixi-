@@ -6,3 +6,6 @@ axios.interceptors.response.use((res)=>{
 export let typeOne=()=>{
     return axios.get('/type?typesOne=1');
 }
+export let comments=(pageIndex,perPage)=>{
+    return axios.get(`/comments?pageIndex=${pageIndex}&perPage=${perPage}`);
+}

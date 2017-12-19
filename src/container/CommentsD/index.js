@@ -1,101 +1,26 @@
 import React,{Component} from 'react';
-import './index.less'
-export default class Comments extends Component{
-    constructor(){
-        super();
-        this.state={
-            comments:[
-            {
-                title:'北京用户：183****2973',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.18'
-            },
-            {
-                title:'上海用户：187****2555',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.17'
-            },
-            {
-                title:'吉林用户：183****2475',
-                comment:'一直他们家的服务，很不错',
-                sub:'洗鞋服务  2017.10.16'
-            },
-            {
-                title:'山东用户：135****2000',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.12'
-            },
-            {
-                title:'河北用户：182****2971',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.8'
-            },
-            {
-                title:'北京用户：183****2973',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.18'
-            },
-            {
-                title:'上海用户：187****2555',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.17'
-            },
-            {
-                title:'吉林用户：183****2475',
-                comment:'一直他们家的服务，很不错',
-                sub:'洗鞋服务  2017.10.16'
-            },
-            {
-                title:'山东用户：135****2000',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.12'
-            },
-            {
-                title:'河北用户：182****2971',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.8'
-            },
-            {
-                title:'北京用户：183****2973',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.18'
-            },
-            {
-                title:'上海用户：187****2555',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.17'
-            },
-            {
-                title:'吉林用户：183****2475',
-                comment:'一直他们家的服务，很不错',
-                sub:'洗鞋服务  2017.10.16'
-            },
-            {
-                title:'山东用户：135****2000',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.12'
-            },
-            {
-                title:'河北用户：182****2971',
-                comment:'一直他们家的服务，很不错，很专业',
-                sub:'洗鞋服务  2017.10.8'
-            }
-        ]}
+import './index.less';
+import actions from '../../store/actions/comments';
+import {connect} from 'react-redux';
+import {downRefresh,upMore} from '../../utils';
 
+class Comments extends Component{
+    componentDidMount(){
+        this.props.axiosComments();
+
+        downRefresh(this.content,this.props.axiosComments);
+        upMore(this.content,this.props.refreshComments)
     }
-
     render(){
         return (
-            <div className="comments">
-
+            <div className="comments" ref={content=>this.content=content}>
+                <div className="main-logo"></div>
                 {
-                    this.state.comments.map((item,index)=>(
+                    this.props.coms.map((item,index)=>(
                         <ul key={index}>
-                            <li className="title">{item.title}</li>
-                            <p></p>
-                            <li className="comment">{item.comment}</li>
-                            <p></p>
-                            <li className="sub">{item.sub}</li>
+                            <li className="title">{item.tel}</li>
+                            <li className="comment">{item.content}</li>
+                            <li className="sub">{item.time}</li>
                         </ul>
                     ))
                 }
@@ -103,3 +28,8 @@ export default class Comments extends Component{
         )
     }
 }
+
+export default connect(
+    state=>state.comments,
+    actions
+)(Comments);

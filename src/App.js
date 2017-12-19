@@ -22,12 +22,12 @@ export default class App extends Component{
                     <NavHeader/>
                     <Tab/>
                     <Route exact  path="/" component={Home}/>
-                    <Route exact  path="/profile" component={Profile}/>
-                    <Route exact  path="/login" component={Login}/>
-                    <Route exact  path="/reg" component={Reg}/>
-                    <Route exact  path="/address" component={Address}/>
-                    <Route exact  path="/addadress" component={AddAddress}/>
-                    <Route exact  path="/comments" component={Comments}/>
+                    <Route path="/profile" component={Profile}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/reg" component={Reg}/>
+                    <Route path="/address" component={Address}/>
+                    <Route path="/addadress" component={AddAddress}/>
+                    <Route path="/comments" component={Comments}/>
 
                 </div>
             </ConnectedRouter>

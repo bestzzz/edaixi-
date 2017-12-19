@@ -58,11 +58,16 @@ export function downRefresh(element,callback){
             let pageY = e.targetTouches[0].pageY;
             if(pageY>startY){//新的点的纵坐标大于起始点的纵坐标表示下拉
                 distance = pageY - startY;
+                if(distance>200){
+
+                    distance=200
+                }
                 element.style.top = initTop+distance+'px';
             }else{//如果上拉的话不处理，移除监听
                 element.removeEventListener('touchmove',touchMove);
                 element.removeEventListener('touchend',touchEnd);
             }
+
         }
         function touchEnd(e){
             element.removeEventListener('touchmove',touchMove);
@@ -96,7 +101,7 @@ export function upMore(element, callback) {
             if ((scrollTop + clientHeight + 10) > scrollHeight) {
                 callback();
             }
-        }, 80)
+        }, 15)
 
     });
 
