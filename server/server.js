@@ -44,7 +44,7 @@ app.use(session({
     secret: 'fly'
 }));
 let bodyParser = require('body-parser');
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 //接收跨域请求
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "http://localhost:8080");
@@ -127,7 +127,7 @@ app.post('/user', function (req, res) {
 });
 
 // 登陆
-app.post('/login', function (req, res) {
+app.get('/login', function (req, res) {
     let user = req.body;
     let url = './mock/users.json';
     read(url, function (users) {

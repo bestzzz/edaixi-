@@ -1,16 +1,24 @@
 import React,{Component} from 'react';
 import "./index.less"
 import {Link} from 'react-router-dom'
-export default class Profile extends Component{
+import {connect} from 'react-redux'
+import actions from '../../store/actions/session'
+
+class Profile extends Component{
+    handleClick=()=>{
+        this.props.logout()
+    };
     render(){
         return (
             <div className='profile-content'>
-             <div className="profile-header">
+                <div className="profile-header">
 
                  <div className='profile-name'>
                      <img src={require('../../images/xiang.jpg')} alt=""/>
                      <div className='name'>
-                         <h2> <Link to='/login'>登录</Link></h2>
+                         {
+                             this.props.user?<h2>{this.props.user.username}</h2>:<h2> <Link to='/login'>登录</Link></h2>
+                         }
                          <p>让生活多份自在</p>
                      </div>
                  </div>
@@ -30,7 +38,14 @@ export default class Profile extends Component{
                         <span className='arrow'> > </span>
                     </div>
                 </div>
+                {
+                    this.props.user?<div className="logout" onClick={this.handleClick}>退出登录</div>:null
+                }
             </div>
         )
     }
 }
+export default connect(
+    state=>state.session,
+    actions
+)(Profile)
