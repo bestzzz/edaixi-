@@ -47,6 +47,7 @@ export default class Home extends Component{
                 <div className="logo"></div>
               <HomeSwiper/>
                 <HomeClean/>
+                <NavHeader title="登录" show={true}/>
             </div>
         )
     }
