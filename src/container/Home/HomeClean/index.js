@@ -17,14 +17,16 @@ export default class HomeClean extends Component{
         return (
             <div className="home-clean">
               <p className="clean">- 专 业 清 洗 -</p>
+                <div className="home-title">
                 {
                     this.state.type.map((item,index)=>(
-                        <div key={index} className="clean-title">
-                            <span className="title">{item.typeName}</span>
-                            <img className="title-ground" src={HomeCleanImg[index]} alt=""/>
-                        </div>
+                    <Link to={`/list/${index+1}`} key={index} className="clean-title">
+                        <span className="title">{item.typeName}</span>
+                        <img className="title-ground" src={HomeCleanImg[index]} alt=""/>
+                     </Link>
                     ))
                 }
+                </div>
             </div>
         )
     }
