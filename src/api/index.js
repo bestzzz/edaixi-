@@ -1,5 +1,6 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.withCredentials = true;
 axios.interceptors.response.use((res)=>{
     return res.data;
 });
@@ -25,4 +26,19 @@ export let Logout=() =>{
 //验证是否登录
 export let validate = () => {
     return axios.get('/validate');
+};
+
+//增加用户
+export let addAddress = (address) => {
+    return axios.post('/address',address);
+};
+
+//获取某个用户关联的地址
+export let addresses = (userid) => {
+    return axios.get(`/adresses?userid=${userid}`);
+};
+
+//上传头像
+export let uploadImge = (user) => {
+    return axios.post('/uploadImge',user);
 };

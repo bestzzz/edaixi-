@@ -1,5 +1,4 @@
-import { Modal } from 'antd-mobile';
-const alert = Modal.alert;
+
 /**
  * @param url  压缩图片的url地址
  * @param percent  压缩比例 0~1

@@ -80,7 +80,13 @@ app.get('/type', function (req, res) {
             res.json({DefaultProducts});
         }
     }
+    //点击二级类
+    if(twoId){
+        let Products = products.filter(item => item.typeId == twoId)
+        res.json({Products});
+    }
 });
+
 //评论
 app.get('/comments', function (req, res) {
     //列表页显示 pageIndex第几页，perPage每页显示几条
@@ -229,4 +235,4 @@ app.post('/address', function (req, res) {
             res.json(address);
         })
     })
-})
+});

@@ -3,24 +3,29 @@ import "./index.less"
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import actions from '../../store/actions/session'
+import UploadImg from "../../components/UploadImg/uploadImg";
 
 class Profile extends Component{
     handleClick=()=>{
+        localStorage.removeItem('login');
         this.props.logout()
     };
     render(){
         return (
             <div className='profile-content'>
                 <div className="profile-header">
-
                  <div className='profile-name'>
+
+                     <UploadImg/>
                      <img src={require('../../images/xiang.jpg')} alt=""/>
+
                      <div className='name'>
                          {
-                             this.props.user?<h2>{this.props.user.username}</h2>:<h2> <Link to='/login'>登录</Link></h2>
+                             this.props.user?<h2>{this.props.user.username}</h2>:<h2><Link to='/login'> 登录 </Link></h2>
                          }
                          <p>让生活多份自在</p>
                      </div>
+
                  </div>
                  <div className='recharge'>充值</div>
              </div>

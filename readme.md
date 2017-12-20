@@ -24,8 +24,16 @@ export let typeTwoOrProducts=(typeId)=>{
 {"DefaultProducts":[{"typeId":4,"productID":91,"productName":"e袋洗","price":299,"img":""},{"typeId":4,"productID":92,"productName":"窗帘拆装费","price":100,"img":""}]}
 
 就是一个对象里有twoTypes属性，一个没有
-```
 
+
+
+```
+### 点击二级类别，获取产品
+```
+export let products=(typeId)=>{
+  return axios.get(`/type?twoId=${typeId}`);
+}
+```
 #### 评论列表
  ```
   //列表页显示 pageIndex第几页，perPage每页显示几条
@@ -78,8 +86,8 @@ export let validate = () => {
 ```
 - 上传头像
 ```
-export let uploadImge = () => {
-   return axios.post('/uploadImge');
+export let uploadImge = (user) => {
+   return axios.post('/uploadImge',user);
  };
  返回：{code: 0}上传成功
 ```

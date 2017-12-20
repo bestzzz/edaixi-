@@ -10,3 +10,12 @@ export const CLEAR_MESSAGES='CLEAR_MESSAGES';
 
 //验证是否登录
 export const VALIDATE='VALIDATE';
+
+//增加地址
+export const ADD_ADDRESS='ADD_ADDRESS';
+
+//获取某个用户的关联账户
+export const ADDRESSES='ADDRESSES';
+
+//上传图片
+export const UPLOADIMAGE='UPLOADIMAGE';

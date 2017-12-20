@@ -10,6 +10,7 @@ import Login from "./container/Login/index";
 import Reg from "./container/Reg/index";
 import Address from "./container/Address/index";
 import AddAddress from "./container/AddAddress/index";
+import ProtectRoute from './ProtectRoute';
 export default class App extends Component{
     render(){
         return (
@@ -17,11 +18,11 @@ export default class App extends Component{
                 <div>
                     <Tab/>
                     <Route exact  path="/" component={Home}/>
-                    <Route exact  path="/profile" component={Profile}/>
-                    <Route exact  path="/login" component={Login}/>
-                    <Route exact  path="/reg" component={Reg}/>
-                    <Route exact  path="/address" component={Address}/>
-                    <Route exact  path="/addadress" component={AddAddress}/>
+                    <Route path="/profile" component={Profile}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/reg" component={Reg}/>
+                    <ProtectRoute path="/address" component={Address}/>
+                    <ProtectRoute path="/addadress" component={AddAddress}/>
                 </div>
             </ConnectedRouter>
         )

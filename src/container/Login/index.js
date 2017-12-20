@@ -7,6 +7,7 @@ import actions from '../../store/actions/session'
 import Alert from '../../components/Alert/index'
 class Login extends Component{
     handleClick=()=>{
+        localStorage.setItem('login','true');
         let username=this.username.value;
         let password=this.password.value;
         this.props.login({username,password})

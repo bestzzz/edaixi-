@@ -3,7 +3,7 @@ import * as types from '../action-types'
 let initState={
     err:'',
     success:'',
-    user:null
+    user:null,
 };
 
 export default function (state=initState,action) {
@@ -27,6 +27,11 @@ export default function (state=initState,action) {
                 success:''
             };
         case types.VALIDATE:
+            return{
+                ...state,
+                ...action.payload
+            };
+        case types.UPLOADIMAGE:
             return{
                 ...state,
                 ...action.payload

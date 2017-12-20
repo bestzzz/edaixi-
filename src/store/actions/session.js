@@ -1,5 +1,5 @@
 import * as types from '../action-types'
-import {Reg,Login,Logout,validate} from '../../api/index'
+import {Reg,Login,Logout,validate,uploadImge} from '../../api/index'
 import {push} from 'react-router-redux';
 export default {
     reg(user){
@@ -45,7 +45,6 @@ export default {
     validate(){
         return function (dispatch,getState) {
             validate().then(result=>{
-                console.log(result,111);
                 let {err,success,user}=result;
                 dispatch({
                     type:types.VALIDATE,
@@ -58,6 +57,11 @@ export default {
         return {
             type:types.CLEAR_MESSAGES
         }
-    }
+    },
+    /*uploadImge(user){
+        uploadImge(user).then(result=>{
+            let
+        })
+    }*/
 
 }
