@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import Tab from "./components/Tab/index";
-import NavHeader from "./components/NavHeader/index";
 import BackD from "./container/BackD/index";
 import {Route} from 'react-router-dom';
 import history from './store/history'
@@ -19,7 +18,6 @@ export default class App extends Component{
         return (
             <ConnectedRouter history={history}>
                 <div>
-                    <NavHeader/>
                     <Tab/>
                     <Route exact  path="/" component={Home}/>
                     <Route path="/profile" component={Profile}/>
