@@ -1,49 +1,57 @@
-*{
-  padding: 0;
-  margin: 0;
+
+.pict{
+  background: url(../../images/loading.gif)center center no-repeat;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  background-size: 50px;
 }
-.comments{
-  background-color: gainsboro;
+.main-con{
+  width: 100%;
+  overflow: hidden;
   position: fixed;
-  top:.8rem;
-  bottom: 0;
-  z-index: 100;
+  top: 0;
+  bottom: 54px;
+  overflow-y: scroll;
 }
-ul{
-  list-style: none;
-  margin: .2rem;
-  border-radius: .1rem;
-  background-color: white;
-  li{
-    line-height:.4rem
+  .comments {
+    width: 100%;
+    background-color: rgba(64, 73, 60, 0.05);
+    position:absolute;
+    top: .8rem;
+    bottom: 0;
+    overflow-y: scroll;
+
+    ul {
+      list-style: none;
+      margin: .2rem;
+      border-radius: .2rem;
+      background-color: white;
+      li {
+        line-height: .6rem;
+        margin: 0 .05rem;
+      }
+      .title {
+        color: #b5b5b6;
+        text-align: left;
+        font-size: .20rem;
+        border-bottom: 1px solid #d5d5d5;
+        padding-left: .1rem;
+      }
+      .comment {
+        font-size: .26rem;
+        text-align: left;
+        border-bottom: 1px solid #d5d5d5;
+        padding-left: .3rem;
+      }
+      .sub {
+        color: #b5b5b6;
+        font-size: .20rem;
+        text-align: right;
+        padding-right: .1rem;
+      }
+    }
   }
 
-  p{
-    margin: 0 auto ;
-    width: 4rem;
-    height: .02rem;
-    border-bottom: .05rem solid gainsboro;
-  }
- .title{
-   text-align: center;
-   height: .3rem;
-   line-height: .3rem;
-   font-size: .26rem;
- }
-  .comment{
-    height: .5rem ;
-    line-height:.5rem;
-    margin: .1rem;
-    font-size: .31rem;
-    text-align: center;
-  }
-  .sub{
-    height: .2rem;
-    line-height: .2rem;
-    padding-left: 1.7rem;
-    font-size: .26rem;
-    padding-top: .1rem;
-    float: right;
-    padding-right: .4rem;
-  }
-}
