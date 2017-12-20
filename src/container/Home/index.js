@@ -24,8 +24,8 @@ export default class Home extends Component{
                 let pageY=event.touches[0].pageY;
                 if(pageY>startY){
                     distance=pageY-startY;
-                    if(distance>50){
-                        distance=50
+                    if(distance>80){
+                        distance=80
                     }
                     dom.style.top=originTop+distance+'px'
                 }
