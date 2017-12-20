@@ -2,8 +2,9 @@ import React,{Component} from 'react';
 import HomeSwiper from "./HomeSwiper/index";
 import './index.less'
 import NavHeader from '../../components/NavHeader/index'
-
-
+import HomeClean from "./HomeClean/index";
+import HomeCare from "./HomeCare/index";
+import HomeComment from "./HomeComment/index";
 export default class Home extends Component{
     componentDidMount(){
         this.downRefresh(this.content)
@@ -44,11 +45,13 @@ export default class Home extends Component{
     }
     render(){
         return (
-            <div ref={content=>this.content=content} className="main">
-                <div className="logo"></div>
-              <HomeSwiper/>
-
-            </div>
+                <div ref={content=>this.content=content} className="main">
+                    <div className="logo"></div>
+                    <HomeSwiper/>
+                    <HomeClean/>
+                    <HomeCare/>
+                    <HomeComment/>
+                </div>
         )
     }
 }
