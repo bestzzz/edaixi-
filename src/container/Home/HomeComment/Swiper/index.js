@@ -16,18 +16,16 @@ export default class Swiper extends Component {
 
     async getComments() {
         let comment = await comments(1, 5);
-        this.setState({comment});
+        this.setState({comment:comment.coms});
     }
 
     render() {
-
-        console.log(this.state.comment);
         let swipeOptions = {
-            auto: 2000,
+
             callback: (index, elem) => {
             }
         };
-        let swiper = (<ReactSwipe className="carousel" key={this.state.comment.length-1} swipeOptions={swipeOptions}>
+        let swiper = (<ReactSwipe className="carousel" key={this.state.comment.length}>
             {
                 this.state.comment.map((item, index) => (
                     <div key={index} className="comment-swiper">
