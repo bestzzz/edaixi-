@@ -1,5 +1,3 @@
-import { Modal } from 'antd-mobile';
-const alert = Modal.alert;
 /**
  * @param url  压缩图片的url地址
  * @param percent  压缩比例 0~1
@@ -91,7 +89,7 @@ export function upMore(element, callback) {
         if (timerId) clearInterval(timerId);
         timerId = setTimeout(function () {
             let scrollTop = element.scrollTop;//得到向上卷曲的高度
-            let clientHeight = element.clientHeight;//视口的高度
+            let clientHeight = element.clientHeight;//窗口的高度
             let scrollHeight = element.scrollHeight;//内容的高度
             if ((scrollTop + clientHeight + 10) > scrollHeight) {
                 callback();
