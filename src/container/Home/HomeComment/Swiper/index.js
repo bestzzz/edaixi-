@@ -28,10 +28,10 @@ export default class Swiper extends Component {
             callback: (index, elem) => {
             }
         };
-        let swiper = (<ReactSwipe key={this.state.comment.length-1} swipeOptions={swipeOptions}>
+        let swiper = (<ReactSwipe className="carousel" key={this.state.comment.length-1} swipeOptions={swipeOptions}>
             {
                 this.state.comment.map((item, index) => (
-                    <div key={index} className="swiper">
+                    <div key={index} className="comment-swiper">
                         <div className="swiper-name">
                             <p className="swiper-tel">{item.tel}</p>
                             <p className="swiper-content">“{item.content}”</p>
