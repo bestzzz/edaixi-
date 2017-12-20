@@ -58,10 +58,6 @@ export function downRefresh(element,callback){
             let pageY = e.targetTouches[0].pageY;
             if(pageY>startY){//新的点的纵坐标大于起始点的纵坐标表示下拉
                 distance = pageY - startY;
-                if(distance>100){
-
-                    distance=100
-                }
                 element.style.top = initTop+distance+'px';
             }else{//如果上拉的话不处理，移除监听
                 element.removeEventListener('touchmove',touchMove);
@@ -98,7 +94,7 @@ export function upMore(element, callback) {
             let scrollTop = element.scrollTop;//得到向上卷曲的高度
             let clientHeight = element.clientHeight;//视口的高度
             let scrollHeight = element.scrollHeight;//内容的高度
-            if ((scrollTop + clientHeight + 10) > scrollHeight) {
+            if ((scrollTop + clientHeight + 50) > scrollHeight) {
                 callback();
             }
         }, 15)

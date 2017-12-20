@@ -24,8 +24,16 @@ export let typeTwoOrProducts=(typeId)=>{
 {"DefaultProducts":[{"typeId":4,"productID":91,"productName":"e袋洗","price":299,"img":""},{"typeId":4,"productID":92,"productName":"窗帘拆装费","price":100,"img":""}]}
 
 就是一个对象里有twoTypes属性，一个没有
-```
 
+
+
+```
+### 点击二级类别，获取产品
+```
+export let products=(typeId)=>{
+  return axios.get(`/type?twoId=${typeId}`);
+}
+```
 #### 评论列表
  ```
   //列表页显示 pageIndex第几页，perPage每页显示几条
@@ -56,7 +64,7 @@ export let typeTwoOrProducts=(typeId)=>{
 ```
 user是一个对象{username:"fly1",password:"111111"}
  export let login = (user) => {
-   return axios.get(`/login`,user);
+   return axios.post(`/login`,user);
  };
  成功返回：{"code":0,"success":"登陆成功","user":{"username":"fly1","password":"111111","userId":2,"time":"2017-12-15T11:48:24.429Z"}}
  失败返回：{"code":1,"err":"用户名或密码错误"}
