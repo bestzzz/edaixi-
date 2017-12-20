@@ -24,7 +24,6 @@ export default class Swiper extends Component {
         console.log(this.state.comment);
         let swipeOptions = {
             auto: 2000,
-            continuous: true,
             callback: (index, elem) => {
             }
         };
