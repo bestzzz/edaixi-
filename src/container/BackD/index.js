@@ -1,11 +1,14 @@
 import React,{Component} from 'react';
 import Tab from "../../components/Tab/index";
-import './index.less'
+import NavHeader from "../../components/NavHeader/index";
+import './index.less';
+
 export default class BackD extends Component{
 
     render(){
         return (
             <div className="all">
+                <NavHeader/>
               <Tab/>
                 <div className="back">
                 <p>e袋洗致力为您提供专业、高效、高品质的洗护服务 <br/>

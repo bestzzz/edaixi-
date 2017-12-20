@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
+import comments from './comments'
 import session from './session'
 let reducers=combineReducers({
     session,
-    // 小的仓库名,
+    comments,
     router:routerReducer
-});
+})
 export default reducers
