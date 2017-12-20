@@ -235,4 +235,4 @@ app.post('/address', function (req, res) {
             res.json(address);
         })
     })
-})
+});

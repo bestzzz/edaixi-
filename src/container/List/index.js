@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import Cart from "../../components/Cart/index";
 import NavHeader from '../../components/NavHeader';
 import ListSlider from "./ListSlider/index";
-import {NavLink, Route, HashRouter as Router} from "react-router-dom";
+import {NavLink, Route, HashRouter as Router,Redirect,Switch} from "react-router-dom";
 import {typeOne} from "../../api/index";
 import {ConnectedRouter} from "react-router-redux";
 import TypeOneCom from "./TypeOneCom/index";
@@ -30,7 +30,16 @@ export default class List extends Component{
                             )):null
                         }
                     </div>
-                    <Route path='/list/:id' component={TypeOneCom}/>
+                    <Switch>
+                        <Route path='/list/:id' component={TypeOneCom}/>
+                        {
+                            this.state.typeOne ? this.state.typeOne.map((item, index) => {
+                                console.log(`/list/${item.typeId}`);
+                                return <Route key={index} render={()=><Redirect to={`/list/${item.typeId}`}/>}/>
+                        }): null
+                        }
+                    </Switch>
+
                 </div>
             </div>
         )

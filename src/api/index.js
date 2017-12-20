@@ -12,3 +12,7 @@ export let typeOne = () => {
 export let typeTwoOrProducts = (typeId) => {
     return axios.get(`/type?oneId=${typeId}`);
 };
+//获取产品
+export let getProducts=(typeId)=>{
+    return axios.get(`/type?twoId=${typeId}`);
+};

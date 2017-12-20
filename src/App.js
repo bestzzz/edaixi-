@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Tab from "./components/Tab/index";
-import {Route, HashRouter as Router} from 'react-router-dom';
+import {Route, HashRouter as Router,Switch,Redirect} from 'react-router-dom';
 import history from './store/history'
 import {ConnectedRouter} from 'react-router-redux';
 import './style/comm.less'
@@ -11,7 +11,7 @@ export default class App extends Component{
         return (
             <Router>
                 <div>
-                    <Route path='/list' component={List}/>
+                        <Route path='/list' component={List}/>
                     <Tab/>
                 </div>
             </Router>
