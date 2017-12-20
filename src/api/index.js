@@ -7,6 +7,17 @@ axios.interceptors.response.use((res)=>{
 export let typeOne=()=>{
     return axios.get('/type?typesOne=1');
 }
+
+//获取二级类
+export let typeTwoOrProducts = (typeId) => {
+    return axios.get(`/type?oneId=${typeId}`);
+};
+
+//获取产品
+export let getProducts=(typeId)=>{
+    return axios.get(`/type?twoId=${typeId}`);
+};
+
 export let comments=(pageIndex,perPage)=>{
     return axios.get(`/comments?pageIndex=${pageIndex}&perPage=${perPage}`);
 };
