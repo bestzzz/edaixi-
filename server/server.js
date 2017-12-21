@@ -164,7 +164,7 @@ app.post("/uploadImge", (req, res) => {
         user.img = imgName;
         users = users.map(item => item.userId == userid ? user : item);
         write(url, users, function () {
-            res.json({code: 0})
+            res.json({code: 0,user})
         })
     })
 });
