@@ -18,7 +18,7 @@ export default class HomeSwiper extends Component{
         let swiper=(<ReactSwipe swipeOptions={swipeOptions}>
             {
                 sliders.map((item,index)=>(
-                   <img key={index} src={item} alt=""/>
+                   <img key={index}  src={item} alt=""/>
                 ))
             }
         </ReactSwipe>)
