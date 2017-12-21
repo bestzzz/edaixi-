@@ -21,6 +21,21 @@ export const CLEAR_MESSAGES='CLEAR_MESSAGES';
 //验证是否登录
 export const VALIDATE='VALIDATE';
 
+
 //加入购物车
 export const ADD_CART='ADD_CART'
+
+
+//增加地址
+export const ADD_ADDRESS='ADD_ADDRESS';
+
+//获取某个用户的关联地址
+export const ADDRESSES='ADDRESSES';
+
+//删除常用地址
+export const DELADDRESS='DELADDRESS';
+
+//上传图片
+export const UPLOADIMAGE='UPLOADIMAGE';
+
 

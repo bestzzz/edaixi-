@@ -2,30 +2,52 @@ import React, {Component} from 'react';
 import NavHeader from '../../components/NavHeader/index'
 import './index.less'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import actions from '../../store/actions/address'
+import ListSwipe from 'react-list-swipe';
 
-export default class Address extends Component {
+class Address extends Component {
+    componentDidMount(){
+       // let userId=this.props.session.user.userId||'';
+        this.props.addresses(this.props.session.user.userId)
+    }
+
     render() {
+        let item={userId:'',province:'',city:'',address1:'',address2:'',name:'',sex:'',tel:''};
+
         return (
             <div className='usual-address'>
                 <NavHeader title='常用地址' show={true}/>
-                <div className='white'>
-                    <Link to='/addadress' className='info'>
-                        <span>姓名</span>
-                        <span>1888888888</span>
-                        <p className='address'>深圳市南山区科技园南区R2-B三楼步步高哈哈哈哈(收)</p>
-                        <span className='arrow'> &gt; </span>
-                    </Link>
+                <div className="content">
+                    {
+                        this.props.address.users.map((item,index)=>{
+                            return <ListSwipe  key={item.ID}>
+                                    <div className="swipe-list-view-cell outcell">
+                                        <div className="swipe-right-btn" id='bg-info' onClick={()=>this.props.deleteaddress(item.ID) } >
+                                            删除
+                                        </div>
+                                        <div className="swipe-handle">
+                                            <div className='white'>
+                                                <Link to={{pathname:`/addadress/${item.ID}`,state:{item}}} className='info'>
+                                                    <span>{item.name}</span>
+                                                    <span>{item.tel}</span>
+                                                    <p className='address'>{item.province}{item.city}{item.address1}{item.address2}</p>
+                                                    <span className='arrow'> &gt; </span>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ListSwipe>
+                        })
+                    }
                 </div>
-                <div className='white'>
-                    <Link to='/addadress' className='info'>
-                        <span>姓名</span>
-                        <span>1888888888</span>
-                        <p className='address'>深圳市南山区科技园南区R2-B三楼步步高哈哈哈哈(收)</p>
-                        <span className='arrow'> &gt; </span>
-                    </Link>
-                </div>
-                <div className="add"> <Link to='/addadress'>+ 添加</Link> </div>
+                <div className="add"> <Link to={{pathname:'/addadress',state:{item}}}>+ 添加地址</Link> </div>
             </div>
         )
     }
 }
+export default connect(
+    state=>state,
+    actions
+)
+(Address)

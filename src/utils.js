@@ -1,3 +1,4 @@
+
 /**
  * @param url  压缩图片的url地址
  * @param percent  压缩比例 0~1
