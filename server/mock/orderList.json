@@ -5,11 +5,11 @@
     "orderProduct": [
       {
         "proId": 1,
-        "sum": 1
+        "counts": 1
       },
       {
         "proId": 2,
-        "sum": 4
+        "counts": 4
       }
     ],
     "orderPriceSum": 100,
@@ -22,11 +22,11 @@
     "orderProduct": [
       {
         "proId": 1,
-        "sum": 1
+        "counts": 1
       },
       {
         "proId": 2,
-        "sum": 4
+        "counts": 4
       }
     ],
     "orderPriceSum": 100,
@@ -38,11 +38,11 @@
     "orderProduct": [
       {
         "proId": 1,
-        "sum": 1
+        "counts": 1
       },
       {
         "proId": 2,
-        "sum": 4
+        "counts": 4
       }
     ],
     "orderPriceSum": 100,

@@ -57,7 +57,6 @@ export default class TypeOneCom extends Component {
                     <Switch> <Route exact path='/list/:id/:bid' component={TypeTwoCom}/>
                         {
                             this.state.TypeTwoData.twoTypes.map((item, index) => {
-                                console.log(`/list/${item.pid}/${item.typeId}`);
                                 return <Route key={index} render={() => <Redirect to={`/list/${item.pid}/${item.typeId}`}/>}/>
                             })
                         }

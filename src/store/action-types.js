@@ -21,3 +21,6 @@ export const CLEAR_MESSAGES='CLEAR_MESSAGES';
 //验证是否登录
 export const VALIDATE='VALIDATE';
 
+//加入购物车
+export const ADD_CART='ADD_CART'
+

@@ -33,7 +33,6 @@ export default class List extends Component{
                         <Route path='/list/:id' component={TypeOneCom}/>
                         {
                             this.state.typeOne ? this.state.typeOne.map((item, index) => {
-                                console.log(`/list/${item.typeId}`);
                                 return <Route key={index} render={()=><Redirect to={`/list/${item.typeId}`}/>}/>
                         }): null
                         }

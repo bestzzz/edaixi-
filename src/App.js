@@ -9,6 +9,7 @@ import './style/comm.less'
 import Home from "./container/Home/index";
 import Profile from "./container/Profile/index";
 import Login from "./container/Login/index";
+import Order from "./container/Order";
 import Reg from "./container/Reg/index";
 import Address from "./container/Address/index";
 import AddAddress from "./container/AddAddress/index";
@@ -30,6 +31,7 @@ export default class App extends Component{
                     <Route path="/addadress" component={AddAddress}/>
                     <Route path="/comments" component={Comments}/>
                     <Route path="/back" component={BackD}/>
+                    <Route path="/order" component={Order}/>
                 </div>
             </ConnectedRouter>
         )
