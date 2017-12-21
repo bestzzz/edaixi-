@@ -14,7 +14,7 @@ class Comments extends Component {
     render() {
         return (
             <div>
-                <NavHeader title="评论"/>
+                <NavHeader title="用户使用评论" show={true}/>
                 <div  ref={content => this.content = content} className="main-con">
                 <div className="pict"></div>
                 <div className="comments">

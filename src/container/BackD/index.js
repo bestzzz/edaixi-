@@ -8,7 +8,7 @@ export default class BackD extends Component{
     render(){
         return (
             <div className="all">
-                <NavHeader/>
+                <NavHeader title="意见反馈" show={true}/>
               <Tab/>
                 <div className="back">
                 <p>e袋洗致力为您提供专业、高效、高品质的洗护服务 <br/>
@@ -29,7 +29,9 @@ export default class BackD extends Component{
 
                     </div>
                 <i>反馈内容</i>
-                <textarea></textarea>
+                    <div className="font">
+                        <textarea></textarea>
+                    </div>
                 <button>提交</button>
                 <p>客服热线：400-818-7171</p>
                 <p>（周一到周日 8:30-22:00）</p>
