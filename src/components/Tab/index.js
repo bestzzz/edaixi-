@@ -2,7 +2,13 @@ import React,{Component} from 'react';
 import {NavLink} from 'react-router-dom'
 import './index.less'
 import NavHeader from "../NavHeader/index";
-export default class Tab extends Component{
+import {connect} from 'react-redux';
+import actions from '../../store/actions/session'
+class Tab extends Component{
+    componentDidMount(){
+        console.log(this.props.validate());
+        this.props.validate();
+    }
     render(){
         return (
             <nav>
@@ -10,9 +16,9 @@ export default class Tab extends Component{
                     <i className="iconfont icon-icon_washer "></i>
                     <span>首页</span>
                 </NavLink>
-                <NavLink to="/orders">
+                <NavLink to="/list">
                     <i className="iconfont icon-nav-order"></i>
-                    <span>订单</span>
+                    <span>类别</span>
                 </NavLink>
                 <NavLink to="/profile">
                     <i className="iconfont icon-wode"></i>
@@ -22,3 +28,8 @@ export default class Tab extends Component{
         )
     }
 }
+
+export default connect(
+   state=>state.session,
+    actions
+)(Tab)
