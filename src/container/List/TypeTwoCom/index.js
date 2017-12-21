@@ -22,13 +22,13 @@ export default class TypeTwoCom extends Component{
         return (
             <div className='list-content3'>
                 {
-                    this.state.flag ? this.state.products.map((item, index) => (
+                    this.products == [] ? defaultProducts.map((item, index) => (
                         <div key={item.productID} className='flex-item'>
                             <img src={item.img}/>
                             <span>{item.productName}</span>
                             <span>￥{item.price}</span>
                         </div>
-                    )) : defaultProducts.map((item, index) => (
+                    )) : this.state.products.map((item, index) => (
                         <div key={item.productID} className='flex-item'>
                             <img src={item.img}/>
                             <span>{item.productName}</span>
