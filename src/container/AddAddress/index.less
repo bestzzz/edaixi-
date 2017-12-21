@@ -1,12 +1,18 @@
 
 
 .panel{
-  padding: .2rem .2rem 0;
+  padding: 0rem .2rem 0;
   font-size: medium;
+  position: absolute;
+  top:.8rem;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #f3f7fa;
   form{
-    padding-top: .4rem;
+
     input{
-      border: .01rem solid #999999;
+      border: .01rem solid #c2eee3;
       outline: none;
       height: .7rem;
       width: 100%;
@@ -14,10 +20,15 @@
       box-sizing: border-box;
       padding-left: .20rem;
       line-height: .42rem;
-      border-radius: .05rem;
+      border-radius: .09rem;
       &#sex{
         height: .3rem;
         width: 20%;
+        font-size: medium;
+      }
+      &#submit{
+        background-color: #00dbf5;
+        color: #fff;
         font-size: medium;
       }
     }

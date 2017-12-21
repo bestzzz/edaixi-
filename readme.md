@@ -86,8 +86,8 @@ export let validate = () => {
 ```
 - 上传头像
 ```
-export let uploadImge = () => {
-   return axios.post('/uploadImge');
+export let uploadImge = (user) => {
+   return axios.post('/uploadImge',user);
  };
  返回：{code: 0}上传成功
 ```

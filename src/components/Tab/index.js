@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import actions from '../../store/actions/session'
 class Tab extends Component{
     componentDidMount(){
-        console.log(this.props.validate());
         this.props.validate();
     }
     render(){

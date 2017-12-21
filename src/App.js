@@ -14,6 +14,9 @@ import Address from "./container/Address/index";
 import AddAddress from "./container/AddAddress/index";
 import Comments from "./container/CommentsD/index";
 import List from './container/List';
+import ProtectRoute from './ProtectRoute';
+
+
 export default class App extends Component{
     render(){
         return (
@@ -26,10 +29,11 @@ export default class App extends Component{
                     <Route path="/profile" component={Profile}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/reg" component={Reg}/>
-                    <Route path="/address" component={Address}/>
-                    <Route path="/addadress" component={AddAddress}/>
                     <Route path="/comments" component={Comments}/>
                     <Route path="/back" component={BackD}/>
+                    <ProtectRoute path="/address" component={Address}/>
+                    <ProtectRoute path="/addadress" component={AddAddress}/>
+
                 </div>
             </ConnectedRouter>
         )

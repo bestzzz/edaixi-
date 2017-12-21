@@ -42,3 +42,24 @@ export let validate = () => {
     return axios.get('/validate');
 };
 
+
+//增加用户
+export let addAddress = (address) => {
+    return axios.post('/address',address);
+};
+
+//获取某个用户关联的地址
+export let addresses = (userid) => {
+    return axios.get(`/adresses?userid=${userid}`);
+};
+
+//删除某个地址
+export let deladdress = (id) => {
+
+    return axios.delete(`/address?id=${id}`);
+};
+
+//上传头像
+export let uploadImge = (user) => {
+    return axios.post('/uploadImge',user);
+};

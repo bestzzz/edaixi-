@@ -17,7 +17,7 @@ export default class UploadImg extends Component{
     };
     render(){
         return (
-            <div>
+            <div style={{width:'30%',height:'100%',position:'absolute'}}>
                 <input type="file" onChange={this.changeImage} className='upFile'/>
             </div>
         )
