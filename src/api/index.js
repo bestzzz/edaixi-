@@ -38,6 +38,12 @@ export let addresses = (userid) => {
     return axios.get(`/adresses?userid=${userid}`);
 };
 
+//删除某个地址
+export let deladdress = (id) => {
+
+    return axios.delete(`/address?id=${id}`);
+};
+
 //上传头像
 export let uploadImge = (user) => {
     return axios.post('/uploadImge',user);

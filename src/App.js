@@ -11,6 +11,7 @@ import Reg from "./container/Reg/index";
 import Address from "./container/Address/index";
 import AddAddress from "./container/AddAddress/index";
 import ProtectRoute from './ProtectRoute';
+import BackD from "./container/BackD/index";
 export default class App extends Component{
     render(){
         return (
@@ -21,6 +22,7 @@ export default class App extends Component{
                     <Route path="/profile" component={Profile}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/reg" component={Reg}/>
+                    <Route path="/back" component={BackD}/>
                     <ProtectRoute path="/address" component={Address}/>
                     <ProtectRoute path="/addadress" component={AddAddress}/>
                 </div>

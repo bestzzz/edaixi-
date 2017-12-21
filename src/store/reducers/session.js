@@ -3,7 +3,7 @@ import * as types from '../action-types'
 let initState={
     err:'',
     success:'',
-    user:null,
+    user:{userId:''},
 };
 
 export default function (state=initState,action) {

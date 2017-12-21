@@ -39,7 +39,7 @@ class Profile extends Component{
                 <div className="white-advice">
                     <div className='advice'>
                         <img src={require('../../images/advice.jpg')} alt=""/>
-                        <span className='fade'><Link to='address'>评价</Link></span>
+                        <span className='fade'><Link to='/back'>评价</Link></span>
                         <span className='arrow'> > </span>
                     </div>
                 </div>

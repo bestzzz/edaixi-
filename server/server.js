@@ -236,3 +236,15 @@ app.post('/address', function (req, res) {
         })
     })
 });
+//删除一个地址
+app.delete('/address', function (req, res) {
+    let {id} = req.query;
+    let url = './mock/adresses.json';
+    read(url, function (adresses) {
+        adresses = JSON.parse(adresses);
+        adresses = adresses.filter(item => item.ID !== parseInt(id)?item:null)
+        write(url, adresses, function () {
+            res.json(address);
+        })
+    })
+});
