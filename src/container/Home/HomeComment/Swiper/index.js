@@ -16,6 +16,7 @@ export default class Swiper extends Component {
 
     async getComments() {
         let comment = await comments(1, 5);
+        console.log(comment);
         this.setState({comment:comment.coms});
     }
 
