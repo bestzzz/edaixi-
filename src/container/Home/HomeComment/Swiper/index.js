@@ -44,7 +44,7 @@ export default class Swiper extends Component {
                                    <div className="swiper-name" style={{backgroundColor: '#ffffff',borderRadius:'10px'}}>
                                        <p className="swiper-tel" style={{padding: '0.2rem 0',
                                            fontSize: '0.2rem',
-                                           textAlign: 'center'}}>{item.tel}</p>
+                                           textAlign: 'center'}}>{item.tel.substr(0,3)+'****'+item.tel.substr(6)}</p>
                                        <i className="iconfont icon-icon-copy" style={{float:'left',fontSize:'0.4rem',padding:'0 0 0 0.4rem'}}></i>
                                           <span className="swiper-content" style={{display:'block',width:'85%',marginLeft:'15%',padding: '0.2rem 0',
                                               color: '#838383',
