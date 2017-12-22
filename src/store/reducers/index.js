@@ -5,6 +5,7 @@ import session from './session'
 let reducers=combineReducers({
     session,
     comments,
-    router:routerReducer
+    router:routerReducer,
+
 })
 export default reducers

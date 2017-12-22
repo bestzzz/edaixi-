@@ -7,7 +7,8 @@ export const AXIOS_COMMENTS_SUCCESS='AXIOS_COMMENTS_SUCCESS';
 export const REFRESH_COMMENTS='REFRESH_COMMENTS';
 //刷新获取评论成功
 export const REFRESH_COMMENTS_SUCCESS='REFRESH_COMMENTS_SUCCESS';
-
+//
+export const ADDCOMMENTS='ADDCOMMENTS';
 //注册
 export const REG='REG';
 //登录

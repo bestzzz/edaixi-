@@ -28,6 +28,7 @@ export default class App extends Component{
                     <Route path="/addadress" component={AddAddress}/>
                     <Route path="/comments" component={Comments}/>
                     <Route path="/back" component={BackD}/>
+
                 </div>
             </ConnectedRouter>
         )

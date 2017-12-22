@@ -41,7 +41,7 @@ export function format(date,fmt){
 //console.log(new Date().Format("yyyy-MM-dd"));
 
 
-//上拉刷新
+//上拉
 export function downRefresh(element,callback){
     element.addEventListener('touchstart',touchStart);
     let startY;//开始触摸的纵坐标
@@ -49,8 +49,9 @@ export function downRefresh(element,callback){
     let initTop = element.offsetTop;
     function touchStart(event){
         //只有当此元素的距离顶部的高度等于它的初始距离的话，并且没有滚动的话
+        startY = event.targetTouches[0].pageY;//初始值
         if(element.offsetTop == initTop && element.scrollTop ==0){
-            startY = event.targetTouches[0].pageY;//初始值
+
             element.addEventListener('touchmove',touchMove);
             element.addEventListener('touchend',touchEnd);
         }
@@ -65,40 +66,41 @@ export function downRefresh(element,callback){
             }
 
         }
-        function touchEnd(e){
+        function touchEnd(){
             element.removeEventListener('touchmove',touchMove);
             element.removeEventListener('touchend',touchEnd);
+
             let timerId = setInterval(function(){
                 //如果说当前的距离已经小于等于初始的值了
-                if(element.offsetTop<=initTop){
+                element.style.top=initTop+(--distance)+'px';
+                if(distance<1){
                     element.style.top = initTop+'px';
                     clearInterval(timerId);//清除定时器
                 }else{//让top值减1
                     element.style.top = element.offsetTop - 3 +'px';
                 }
-            },1);
-            if(distance>20){
+            },14);
+            if(distance>50){
                 callback();
             }
         }
     }
 }
 
-//下拉加载
+//下拉
 export function upMore(element, callback) {
-    console.log("循环执行");
+    console.log("upMore");
     let timerId;
     element.addEventListener('scroll', function () {
+        console.log("循环执行");
         if (timerId) clearInterval(timerId);
         timerId = setTimeout(function () {
             let scrollTop = element.scrollTop;//得到向上卷曲的高度
             let clientHeight = element.clientHeight;//视口的高度
             let scrollHeight = element.scrollHeight;//内容的高度
-            if ((scrollTop + clientHeight + 50) > scrollHeight) {
+            if (scrollTop + clientHeight + 10 >= scrollHeight) {
                 callback();
             }
-        }, 15)
-
+        }, 200)
     });
-
 }

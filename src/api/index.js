@@ -10,7 +10,9 @@ export let typeOne=()=>{
 export let comments=(pageIndex,perPage)=>{
     return axios.get(`/comments?pageIndex=${pageIndex}&perPage=${perPage}`);
 };
-
+export let addComment = (comment) => {
+    return axios.post(`/comment`,comment);
+};
 //注册
 export let Reg = (user) => {
     return axios.post('/user',user);
