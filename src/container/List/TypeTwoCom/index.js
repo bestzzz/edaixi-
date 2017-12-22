@@ -3,6 +3,7 @@ import {getProducts} from "../../../api";
 import {connect} from 'react-redux';
 import actions from '../../../store/actions/cart';
 import {NavLink} from "react-router-dom";
+
 class TypeTwoCom extends Component {
     constructor() {
         super();
@@ -31,11 +32,10 @@ class TypeTwoCom extends Component {
         this.setState({sum, sumPrice})
 
     }
-
+    //添加购物车
     addCart = (pro) => {
         this.updateCart(pro, 'counts', 1);
     }
-
     //更新购物车
     updateCart = (pro, curr, count, input) => {
         let cartTemp = this.state.cart;
@@ -64,7 +64,7 @@ class TypeTwoCom extends Component {
         })
         localStorage.setItem('cart', JSON.stringify(cart));
         localStorage.setItem('cartLocal', JSON.stringify(this.state.cart));
-        localStorage.setItem('sumPrice',this.state.sumPrice);
+        localStorage.setItem('sumPrice', this.state.sumPrice);
         this.props.addCart(JSON.parse(localStorage.getItem('cart')), this.state.sumPrice)
     }
     changeCounts = (pro, count) => {
@@ -116,8 +116,12 @@ class TypeTwoCom extends Component {
                             <span>￥{item.price}</span>
                         </div>
                     )) : defaultProducts.map((item, index) => (
-                        <div key={item.productID} className='flex-item'>
-                            <img src={item.img}/>
+                        <div key={item.productID} className='flex-item' onClick={() => this.addCart(item)}>
+                            <span className='img'>
+                                 <img src={item.img}/>
+                                {this.getCartSum(item) ?
+                                    <span className='hasCart'>{this.getCartSum(item)}</span> : null}
+                            </span>
                             <span>{item.productName}</span>
                             <span>￥{item.price}</span>
                         </div>

@@ -1,9 +1,96 @@
-.order {
-  line-height: .4rem;
-  span {
-   padding: .1rem;
-  }
-  p{
-    padding:.2rem;
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f9f9f9;
+  .box {
+    margin-top: .2rem;
+    font-size: .2rem;
+    a {
+      color: #555;
+    }
+    .pickUp {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      height: 1rem;
+      width: 96%;
+      margin-left: .1rem;
+      font-size: .3rem;
+    }
+    .con {
+      border: .03rem dashed skyblue;
+      width: 96%;
+      height: 1.4rem;
+      background-color: white;
+      margin-left: .1rem;
+      .name {
+        display: inline-block;
+        height: .6rem;
+        margin-top: .2rem;
+        margin-left: .3rem;
+      }
+      .tel {
+        margin-left: 3rem;
+        margin-top: .2rem;
+      }
+      .address {
+        display: block;
+        margin-left: .3rem;
+      }
+      i {
+        position: relative;
+        top: -0.65rem;
+        left: 5.5rem;
+        font-size: 0.5rem;
+      }
+
+    }
+
+    .choose {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+      background-color: white;
+      width: 6.2rem;
+      height: 1rem;
+      margin: .2rem auto;
+      line-height: .6rem;
+      a {
+        margin-left: .2rem;
+      }
+      span {
+        padding-left: .1rem;
+        text-decoration: underline;
+        color: blue;
+      }
+    }
+
+    textarea {
+      display: block;
+      margin: .2rem auto 0 auto;
+      width: 93%;
+      height: 1.40rem;
+      background-color: #f9f9f9;
+      padding: .1rem;
+    }
+
+    input {
+      display: block;
+      width: 5.9rem;
+      height: .7rem;
+      border-radius: .1rem;
+      margin: .4rem auto;
+      font-size: .29rem;
+      color: white;
+      letter-spacing: .07rem;
+      background-color: #00dbf5;
+      outline: none;
+    }
   }
 }

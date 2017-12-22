@@ -146,7 +146,7 @@ export let adresses = (userid) => {
 ```
 - 获取某个订单关联的地址
 ```
-export let address = (addressid) => {
+export let getAddress = (addressid) => {
    return axios.get(`/address?addressid=${addressid}`);
  };
  返回内容是一个对象：

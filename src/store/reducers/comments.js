@@ -27,17 +27,22 @@ export default function (state=stateInit,actions) {
         case types.REFRESH_COMMENTS:
             return{
                 ...state,
-                coms:[],
                 loading:true
             };
         case types.REFRESH_COMMENTS_SUCCESS:
             return{
                 ...state,
-                coms:[...actions.payload.coms],
+                coms:[...state.coms, ...actions.payload.coms],
                 pageIndex:state.pageIndex+1,
                 hasMore:actions.payload.hasMore,
                 loading:false
             };
+        case types.ADDCOMMENTS:
+            return{
+                ...state,
+                ...actions.payload,
+
+            }
         default:
             return state
     }

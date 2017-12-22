@@ -34,7 +34,8 @@ export default class App extends Component{
                     <Route path="/reg" component={Reg}/>
                     <Route path="/comments" component={Comments}/>
                     <Route path="/back" component={BackD}/>
-                    <Route path="/order" component={Order}/>
+                    <Route exact path="/order" component={Order}/>
+                    <Route exact path="/order/:id" component={Order}/>
                     <ProtectRoute path="/address" component={Address}/>
                     <ProtectRoute path="/addadress" component={AddAddress}/>
                     <ProtectRoute path="/getorder" component={GetOrder}/>

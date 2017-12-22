@@ -32,6 +32,7 @@ export default function (state=initState,action) {
                 ...action.payload
             };
         case types.UPLOADIMAGE:
+            debugger
             return{
                 ...action.payload
             };

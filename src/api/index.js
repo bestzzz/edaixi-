@@ -71,3 +71,8 @@ return axios.get(`/orders?userid=${userid}`);
 export let addOrder = (order) => {
     return axios.post('/order',order);
 };
+
+//获取某个订单关联的地址
+export let getAddress = (addressid) => {
+   return axios.get(`/address?addressid=${addressid}`);
+};

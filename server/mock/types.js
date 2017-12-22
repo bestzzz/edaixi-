@@ -2,12 +2,14 @@ module.exports=[
     {
         pid:0,
         typeId:1,
-        typeName:'洗衣'
+        typeName:'洗衣',
+        defaultTypeId: '6'
     },
     {
         pid:0,
         typeId:2,
-        typeName:'洗鞋'
+        typeName:'洗鞋',
+        defaultTypeId: '10'
     } ,
     {
         pid:0,

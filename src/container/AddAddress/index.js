@@ -21,7 +21,6 @@ class AddAddress extends Component {
     };
     render() {
         let item=this.props.location.state?this.props.location.state.item:{userId:'',province:'',city:'',address1:'',address2:'',name:'',sex:'男',tel:''};
-        console.log(item);
         return (
             <div>
                 <NavHeader title='填写地址' show={true}/>

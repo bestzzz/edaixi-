@@ -1,5 +1,6 @@
 import * as types from '../action-types';
-import {comments} from '../../api/index';
+import {comments,addComment} from '../../api/index';
+
 
 export default {
     axiosComments(){
@@ -36,6 +37,17 @@ export default {
 
         }
     },
+    addcomments(userId){
+        return function (dispatch,getState) {
+            addcomments(userId).then(result=>{
+                dispatch({
+                    type:types.ADDCOMMENTS,
+                    payload:result
+                });
+                dispatch(push('/comments'))
+            })
 
+        }
+    }
 
 }
