@@ -11,6 +11,7 @@ class Profile extends Component{
         this.props.logout()
     };
     render(){
+
         return (
             <div className='profile-content'>
                 <div className="profile-header">
@@ -32,7 +33,7 @@ class Profile extends Component{
                 <div className="white">
                     <div className='address'>
                         <img src={require('../../images/address.jpg')} alt=""/>
-                        <span><Link to='address'>常用地址</Link></span>
+                        <span><Link to={{pathname:'/address',state:{from:this.props.user.userId}}}>常用地址</Link></span>
                         <span className='arrow'> > </span>
                     </div>
                 </div>
