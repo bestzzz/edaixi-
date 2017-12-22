@@ -196,7 +196,7 @@ app.post('/order', function (req, res) {
     let url = './mock/orderList.json';
     read(url, function (orders) {
         orders = JSON.parse(orders);
-        order.ID = orders.length > 0 ? orders[orders.length - 1].orderId + 1 : 1;
+        order.ID = orders.length > 0 ? orders[orders.length - 1].ID + 1 : 1;
         order.time = new Date;
         orders = [...orders, order];
         write(url, orders, function () {

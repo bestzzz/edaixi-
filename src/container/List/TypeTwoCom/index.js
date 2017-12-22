@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {getProducts} from "../../../api";
 import {connect} from 'react-redux';
 import actions from '../../../store/actions/cart';
-
+import {NavLink} from "react-router-dom";
 class TypeTwoCom extends Component {
     constructor() {
         super();
@@ -20,10 +20,10 @@ class TypeTwoCom extends Component {
             let products = await getProducts(this.props.match.params.bid);
             this.setState({products: products.Products, flag: true});
         }
-        this.setState({cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []});
-        let checkedCart=this.state.cart.filter(item=>item.isChecked);
+        this.setState({cart: localStorage.getItem('cartLocal') ? JSON.parse(localStorage.getItem('cartLocal')) : []});
+        let checkedCart = this.state.cart.filter(item => item.isChecked);
         let sum = checkedCart.reduce((prev, next) => {
-            return prev +parseInt(next.counts) ;
+            return prev + parseInt(next.counts);
         }, 0)
         let sumPrice = checkedCart.reduce((prev, next) => {
             return prev + (next.counts * next.pro.price);
@@ -43,10 +43,10 @@ class TypeTwoCom extends Component {
         if (Index >= 0) {
             if (curr === 'counts' && input && parseInt(count)) {
                 //input值
-                parseInt(count) > 0? cartTemp[Index][curr] = parseInt(count) : null;
+                parseInt(count) > 0 ? cartTemp[Index][curr] = parseInt(count) : null;
             } else if (curr === 'counts') {
                 // 加减
-                cartTemp[Index][curr] + parseInt(count) > 0 ?cartTemp[Index][curr]= cartTemp[Index][curr] + parseInt(count) : null;
+                cartTemp[Index][curr] + parseInt(count) > 0 ? cartTemp[Index][curr] = cartTemp[Index][curr] + parseInt(count) : null;
             } else if (curr === 'isChecked') {
                 cartTemp[Index][curr] = !cartTemp[Index][curr];
             }
@@ -59,15 +59,20 @@ class TypeTwoCom extends Component {
     }
     //添加购物车信息到reducer
     setStorage = () => {
-        localStorage.setItem('cart', JSON.stringify(this.state.cart));
-        this.props.addCart(JSON.parse(localStorage.getItem('cart')))
+        let cart = this.state.cart.map(item => {
+            return ({proId: item.pro.productID, counts: item.counts})
+        })
+        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('cartLocal', JSON.stringify(this.state.cart));
+        localStorage.setItem('sumPrice',this.state.sumPrice);
+        this.props.addCart(JSON.parse(localStorage.getItem('cart')), this.state.sumPrice)
     }
     changeCounts = (pro, count) => {
         this.updateCart(pro, 'counts', count);
     }
     changeCountsInput = (e, pro) => {
         let count = e.target.value;
-        this.updateCart(pro, 'counts', count,1);
+        this.updateCart(pro, 'counts', count, 1);
     }
     changeChecked = (pro) => {
         this.updateCart(pro, 'isChecked');
@@ -79,13 +84,12 @@ class TypeTwoCom extends Component {
     }
     closeCart = () => {
         this.cartAll.style.height = '0';
-        this.title.style.display='none'
+        this.title.style.display = 'none'
     }
     showCart = () => {
-        console.log(1);
         this.cartAll.style.height = '4rem';
         this.cartAll.style.display = 'block';
-        this.title.style.display='block';
+        this.title.style.display = 'block';
     }
     getCartSum = (pro) => {
         let cartTemp = this.state.cart;
@@ -102,10 +106,11 @@ class TypeTwoCom extends Component {
             <div className='list-content3'>
                 {
                     this.state.flag ? this.state.products.map((item, index) => (
-                        <div key={item.productID} className='flex-item'  onClick={() => this.addCart(item)}>
+                        <div key={item.productID} className='flex-item' onClick={() => this.addCart(item)}>
                             <span className='img'>
                                 <img src={item.img}/>
-                                {this.getCartSum(item)?<span className='hasCart'>{this.getCartSum(item)}</span> : null}
+                                {this.getCartSum(item) ?
+                                    <span className='hasCart'>{this.getCartSum(item)}</span> : null}
                             </span>
                             <span>{item.productName}</span>
                             <span>￥{item.price}</span>
@@ -119,7 +124,7 @@ class TypeTwoCom extends Component {
                     ))
                 }
                 {this.state.cart.length == 0 ?
-                    <div className="cartPickUp">预约取件</div> :
+                    <div className="cartPickUp"><NavLink to="/order">预约取件</NavLink></div> :
                     <div className="cart">
                     <span className="iconfont icon-wodegouwuche" onClick={this.showCart}>
                         <span className="sum">{this.state.sum}</span>
@@ -128,12 +133,13 @@ class TypeTwoCom extends Component {
                     <span><span className="jiage">预估价格：￥</span><span
                         className="sumPrice">{(this.state.sumPrice).toFixed(2)}</span></span>
                     <p className="ShippingCosts">不含运费</p></span>
-                        <span className="pickUp">预约取件</span>
+                        <span className="pickUp"><NavLink to="/order">预约取件</NavLink></span>
                     </div>
                 }
                 <div className="cartAll" ref={input => this.cartAll = input}>
-                    <div className="title" ref={input => this.title = input}><span onClick={this.clear}>清空</span> <span>价格预估</span> <span
-                        onClick={this.closeCart}>关闭</span></div>
+                    <div className="title" ref={input => this.title = input}><span onClick={this.clear}>清空</span> <span>价格预估</span>
+                        <span
+                            onClick={this.closeCart}>关闭</span></div>
                     <div className="cartList">
                         <ul>
                             {

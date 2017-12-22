@@ -63,3 +63,8 @@ export let deladdress = (id) => {
 export let uploadImge = (user) => {
     return axios.post('/uploadImge',user);
 };
+
+//增加一个订单
+export let addOrder = (order) => {
+    return axios.post('/order',order);
+};
