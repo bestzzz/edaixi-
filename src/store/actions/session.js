@@ -58,10 +58,15 @@ export default {
             type:types.CLEAR_MESSAGES
         }
     },
-    /*uploadImge(user){
-        uploadImge(user).then(result=>{
-            let
-        })
-    }*/
+    uploadImge(user){
+        return function (dispatch,getState) {
+            uploadImge(user).then(result=>{
+                dispatch({
+                    type:types.UPLOADIMAGE,
+                    payload:result
+                })
+            })
+        }
+    }
 
 }

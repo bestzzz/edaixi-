@@ -19,7 +19,7 @@ class Address extends Component {
     }*/
     render() {
 
-        let item={userId:'',province:'',city:'',address1:'',address2:'',name:'',sex:'',tel:''};
+        let item={userId:'',province:'',city:'',address1:'',address2:'',name:'',sex:'男',tel:''};
 
         return (
             <div className='usual-address'>

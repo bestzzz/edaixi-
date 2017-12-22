@@ -15,6 +15,7 @@ import AddAddress from "./container/AddAddress/index";
 import ProtectRoute from './ProtectRoute';
 import Comments from "./container/CommentsD/index";
 import List from './container/List';
+import GetOrder from "./container/GetOrder/index";
 
 
 
@@ -32,9 +33,10 @@ export default class App extends Component{
                     <Route path="/reg" component={Reg}/>
                     <Route path="/comments" component={Comments}/>
                     <Route path="/back" component={BackD}/>
+
                     <ProtectRoute path="/address" component={Address}/>
                     <ProtectRoute path="/addadress" component={AddAddress}/>
-
+                    <ProtectRoute path="/getorder" component={GetOrder}/>
                 </div>
             </ConnectedRouter>
         )

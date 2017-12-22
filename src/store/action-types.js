@@ -31,6 +31,8 @@ export const ADDRESSES='ADDRESSES';
 export const DELADDRESS='DELADDRESS';
 
 //上传图片
-
 export const UPLOADIMAGE='UPLOADIMAGE';
+
+////获取某个用户的订单列表
+export const GETORDER='GETORDER';
 

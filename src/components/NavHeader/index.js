@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {withRouter} from 'react-router-dom'
 import './index.less'
+
  class NavHeader extends Component{
     render(){
         return (

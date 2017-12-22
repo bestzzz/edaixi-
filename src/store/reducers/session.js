@@ -33,7 +33,6 @@ export default function (state=initState,action) {
             };
         case types.UPLOADIMAGE:
             return{
-                ...state,
                 ...action.payload
             };
         default:
