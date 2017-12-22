@@ -6,6 +6,7 @@ import actions from '../../store/actions/address'
 import {withRouter} from 'react-router-dom'
 
 class AddAddress extends Component {
+
     handleSubmit = (e) => {
         e.preventDefault();
         let userId=this.props.session.user.userId ||null;
@@ -19,7 +20,8 @@ class AddAddress extends Component {
         this.props.addAddress({userId,province,city,address1,address2,name,sex,tel})
     };
     render() {
-        let {item}=this.props.location.state;
+        let item=this.props.location.state?this.props.location.state.item:{userId:'',province:'',city:'',address1:'',address2:'',name:'',sex:'男',tel:''};
+        console.log(item);
         return (
             <div>
                 <NavHeader title='填写地址' show={true}/>

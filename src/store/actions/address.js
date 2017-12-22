@@ -1,5 +1,5 @@
 import * as types from '../action-types'
-import {addAddress,addresses,deladdress} from '../../api/index'
+import {addAddress,addresses,deladdress,getOrder} from '../../api/index'
 import {push} from 'react-router-redux';
 
 export default {
@@ -16,7 +16,9 @@ export default {
     },
     addresses(userId){
         return function (dispatch,getState) {
+            console.log(userId);//''
             addresses(userId).then(result=>{
+                console.log(result);
                 dispatch({
                     type:types.ADDRESSES,
                     payload:result
@@ -24,12 +26,22 @@ export default {
             })
         }
     },
-    deleteaddress(id){
+    deleteaddress(id,userId){
         return function (dispatch,getState) {
             deladdress(id).then(result=>{
-                console.log(result);
+                result=result.filter(item=>item.userId==parseInt(userId)?item:null)
                 dispatch({
                     type:types.DELADDRESS,
+                    payload:result
+                })
+            })
+        }
+    },
+    getOrder(userId){
+        return function (dispatch,getState) {
+            getOrder(userId).then(result=>{
+                dispatch({
+                    type:types.GETORDER,
                     payload:result
                 })
             })

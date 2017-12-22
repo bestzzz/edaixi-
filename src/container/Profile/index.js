@@ -11,14 +11,13 @@ class Profile extends Component{
         this.props.logout()
     };
     render(){
+        console.log(this.props);
         return (
             <div className='profile-content'>
                 <div className="profile-header">
                  <div className='profile-name'>
-
-                     <UploadImg/>
+                     <UploadImg uploadImge={this.props.uploadImge}/>
                      <img src={require('../../images/xiang.jpg')} alt=""/>
-
                      <div className='name'>
                          {
                              this.props.user?<h2>{this.props.user.username}</h2>:<h2><Link to='/login'> 登录 </Link></h2>
@@ -27,12 +26,14 @@ class Profile extends Component{
                      </div>
 
                  </div>
-                 <div className='recharge'>充值</div>
+                    {
+                        this.props.user?<div className='recharge' onClick={this.handleClick}>退出</div>:null
+                    }
              </div>
                 <div className="white">
                     <div className='address'>
                         <img src={require('../../images/address.jpg')} alt=""/>
-                        <span><Link to='address'>常用地址</Link></span>
+                        <span><Link to={{pathname:'/address'}}>常用地址</Link></span>
                         <span className='arrow'> > </span>
                     </div>
                 </div>
@@ -43,9 +44,14 @@ class Profile extends Component{
                         <span className='arrow'> > </span>
                     </div>
                 </div>
-                {
-                    this.props.user?<div className="logout" onClick={this.handleClick}>退出登录</div>:null
-                }
+                <div className="white-order">
+                    <div className='order'>
+                        <img src={require('../../images/order.jpg')} alt=""/>
+                        <span className='fade'><Link to='/getorder'>获取订单</Link></span>
+                        <span className='arrow'> > </span>
+                    </div>
+                </div>
+
             </div>
         )
     }

@@ -1,7 +1,8 @@
 import * as types from '../action-types'
 
 let initState={
-    users:[{ID:''}]
+    users:[{ID:''}],
+    orders:[]
 };
 
 export default function (state=initState,action) {
@@ -14,13 +15,17 @@ export default function (state=initState,action) {
         case types.ADDRESSES:
             return{
                 ...state,
-                users:[...action.payload]
+                users:action.payload
             };
         case types.DELADDRESS:
-            console.log(state,'111');
-            console.log(action);
             return{
-                ...action.payload
+                ...state,
+                users:action.payload
+            };
+        case types.GETORDER:
+            return{
+                ...state,
+                orders:action.payload
             };
         default:
             return state
