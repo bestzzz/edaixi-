@@ -19,8 +19,6 @@ export default class Swiper extends Component {
     }
 
     render() {
-
-        console.log(this.state.comment);
         let swipeOptions = {
             callback: (index, elem) => {
             }

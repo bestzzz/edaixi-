@@ -40,3 +40,8 @@ export let Logout=() =>{
 export let validate = () => {
     return axios.get('/validate');
 };
+
+//添加评论
+export let addComment = (comment) => {
+    return axios.post(`/comment`,comment);
+};

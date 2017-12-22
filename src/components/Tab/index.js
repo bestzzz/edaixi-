@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import actions from '../../store/actions/session'
 class Tab extends Component{
     componentDidMount(){
-        console.log(this.props.validate());
         this.props.validate();
     }
     render(){
@@ -16,7 +15,7 @@ class Tab extends Component{
                     <i className="iconfont icon-icon_washer "></i>
                     <span>首页</span>
                 </NavLink>
-                <NavLink to="/list">
+                <NavLink to="/list/1/6">
                     <i className="iconfont icon-nav-order"></i>
                     <span>类别</span>
                 </NavLink>

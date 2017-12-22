@@ -27,7 +27,7 @@ export default class App extends Component{
                     <Route path="/reg" component={Reg}/>
                     <Route path="/address" component={Address}/>
                     <Route path="/addadress" component={AddAddress}/>
-                    <Route path="/comments" component={Comments}/>
+                    <Route path="/comments/:typeId" component={Comments}/>
                     <Route path="/back" component={BackD}/>
                 </div>
             </ConnectedRouter>

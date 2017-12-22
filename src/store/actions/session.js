@@ -45,7 +45,6 @@ export default {
     validate(){
         return function (dispatch,getState) {
             validate().then(result=>{
-                console.log(result,111);
                 let {err,success,user}=result;
                 dispatch({
                     type:types.VALIDATE,
@@ -59,5 +58,4 @@ export default {
             type:types.CLEAR_MESSAGES
         }
     }
-
 }
