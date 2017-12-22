@@ -28,7 +28,16 @@ module.exports = {
                     ],
                     "plugins": [
                         "transform-object-rest-spread",
-                        "transform-class-properties"
+                        "transform-class-properties",
+                        [
+                            'transform-runtime',
+                            {
+                                'helpers':false,
+                                'polyfill':false,
+                                'regenerator':true,
+                                'moduleName':'babel-runtime'
+                            }
+                        ]
                     ]
                 }
             },

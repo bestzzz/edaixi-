@@ -8,7 +8,9 @@ export default class BackD extends Component{
     render(){
         return (
             <div className="all">
+
                 <NavHeader title="意见反馈" show={true}/>
+
               <Tab/>
                 <div className="back">
                 <p>e袋洗致力为您提供专业、高效、高品质的洗护服务 <br/>

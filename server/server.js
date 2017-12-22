@@ -81,7 +81,7 @@ app.get('/type', function (req, res) {
         }
     }
     //点击二级类
-    if(twoId){
+    if (twoId) {
         let Products = products.filter(item => item.typeId == twoId)
         res.json({Products});
     }
@@ -90,10 +90,12 @@ app.get('/type', function (req, res) {
 //评论
 app.get('/comments', function (req, res) {
     //列表页显示 pageIndex第几页，perPage每页显示几条
-    let {pageIndex, perPage} = req.query;
+    let {pageIndex: offset, perPage: limit} = req.query;
+    offset=parseInt(offset)||0;
+    limit=parseInt(limit)||5;
     read('./mock/comments.json', function (comments) {
-        let coms = JSON.parse(comments).slice((pageIndex - 1) * perPage, perPage * pageIndex);
-        let hasMore = (pageIndex - 1) * perPage + parseInt(perPage) < JSON.parse(comments).length
+        let hasMore = limit + offset < JSON.parse(comments).length;
+        let coms = JSON.parse(comments).slice(offset, offset + limit);
         res.json({coms, hasMore});
     })
 });
@@ -156,28 +158,28 @@ app.post("/uploadImge", (req, res) => {
         users = JSON.parse(users);
         let user = users.find(item => item.userId == userid);
         //如果之前user.img有值，则从文件夹中删除这张图片
-        if(user.img.length){
+        if (user.img.length) {
             fs.unlinkSync(user.img);
         }
-        user.img=imgName;
-        users=users.map(item=>item.userId==userid?user:item);
+        user.img = imgName;
+        users = users.map(item => item.userId == userid ? user : item);
         write(url, users, function () {
-            res.json({code: 0})
+            res.json({code: 0,user})
         })
     })
 });
 //当应用初始化的时候，会向后台发送一个请求，询问当前用户是否登录，如果登录的话则返回登录的用户并存放在仓库里。
-app.get('/validate',function(req,res){
-    if(req.session.user){
-        res.json({code:0,user:req.session.user});
-    }else{
-        res.json({code:1})
+app.get('/validate', function (req, res) {
+    if (req.session.user) {
+        res.json({code: 0, user: req.session.user});
+    } else {
+        res.json({code: 1})
     }
 });
 
-app.get("/logout",function (req,res) {
+app.get("/logout", function (req, res) {
     req.session.destroy();
-    res.json({code:0,success:'退出成功'})
+    res.json({code: 0, success: '退出成功'})
 })
 //获取某个用户的订单列表
 app.get('/orders', function (req, res) {

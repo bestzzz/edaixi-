@@ -15,9 +15,9 @@ class Tab extends Component{
                     <i className="iconfont icon-icon_washer "></i>
                     <span>首页</span>
                 </NavLink>
-                <NavLink to="/orders">
+                <NavLink to="/list">
                     <i className="iconfont icon-nav-order"></i>
-                    <span>订单</span>
+                    <span>类别</span>
                 </NavLink>
                 <NavLink to="/profile">
                     <i className="iconfont icon-wode"></i>

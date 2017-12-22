@@ -62,6 +62,7 @@ export function downRefresh(element,callback){
                 element.removeEventListener('touchmove',touchMove);
                 element.removeEventListener('touchend',touchEnd);
             }
+
         }
         function touchEnd(e){
             element.removeEventListener('touchmove',touchMove);
@@ -90,12 +91,12 @@ export function upMore(element, callback) {
         if (timerId) clearInterval(timerId);
         timerId = setTimeout(function () {
             let scrollTop = element.scrollTop;//得到向上卷曲的高度
-            let clientHeight = element.clientHeight;//视口的高度
+            let clientHeight = element.clientHeight;//窗口的高度
             let scrollHeight = element.scrollHeight;//内容的高度
-            if ((scrollTop + clientHeight + 10) > scrollHeight) {
+            if ((scrollTop + clientHeight + 50) > scrollHeight) {
                 callback();
             }
-        }, 80)
+        }, 15)
 
     });
 
