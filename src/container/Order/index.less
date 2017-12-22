@@ -23,11 +23,21 @@ body {
       font-size: .3rem;
     }
     .con {
+      position:relative;
       border: .03rem dashed skyblue;
       width: 96%;
       height: 1.4rem;
       background-color: white;
       margin-left: .1rem;
+      .updateAddress{
+        padding-left: .1rem;
+        text-decoration: underline;
+        color: blue;
+        position: absolute;
+        right: .1rem;
+        top:42%;
+      }
+
       .name {
         display: inline-block;
         height: .6rem;
@@ -44,9 +54,9 @@ body {
       }
       i {
         position: relative;
-        top: -0.65rem;
-        left: 5.5rem;
-        font-size: 0.5rem;
+        font-size: 0.2rem;
+        text-decoration: underline;
+        color: blue;
       }
 
     }
@@ -62,13 +72,13 @@ body {
       margin: .2rem auto;
       line-height: .6rem;
       a {
-        margin-left: .2rem;
+        span{
+          margin-left: .2rem;
+          text-decoration: underline;
+          color: blue;
+        }
       }
-      span {
-        padding-left: .1rem;
-        text-decoration: underline;
-        color: blue;
-      }
+
     }
 
     textarea {
@@ -93,4 +103,7 @@ body {
       outline: none;
     }
   }
+}
+.datepicker{
+  font-size: .14rem !important;
 }

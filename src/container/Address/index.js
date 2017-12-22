@@ -20,7 +20,6 @@ class Address extends Component {
 
     render() {
         let item = {userId: '', province: '', city: '', address1: '', address2: '', name: '', sex: '男', tel: ''};
-        console.log(this.props.address.users);
         return (
             <div className='usual-address'>
                 <NavHeader title='常用地址' show={true}/>
@@ -32,21 +31,25 @@ class Address extends Component {
                                     <div className="swipe-right-btn" id='bg-info' onClick={() => {
                                         this.props.deleteaddress(item.ID, this.props.session.user.userId);
                                     }}>
-                                        删除
+                                        <i className="iconfont icon-lajitong"></i> 删除
                                     </div>
                                     <div className="swipe-handle">
                                         <div className='white'>
                                             <div className="default">
-                                                <Link to={{pathname: `/order/${item.ID}`, state: {item}}}
-                                                      className='info'>
-                                                    <span>{item.name}</span>
-                                                    <span>{item.tel}</span>
-                                                    <p className='address'>{item.province}{item.city}{item.address1}{item.address2}</p>
-                                                </Link>
-                                                <Link to={{pathname: `/addadress/${item.ID}`, state: {item}}}
-                                                      className='info'>
-                                                    <span>编辑</span><span className='arrow'> &gt; </span>
-                                                </Link>
+                                                <span>
+                                                    <Link to={{pathname: `/order/${item.ID}`, state: {item}}}
+                                                                 className='info'>
+                                                        <span>{item.name}</span>
+                                                        <span>{item.tel}</span>
+                                                        <p className='address'>{item.province}{item.city}{item.address1}{item.address2}</p>
+                                                    </Link>
+                                                </span>
+                                                <span>
+                                                    <Link to={{pathname: `/addadress/${item.ID}`, state: {item}}}
+                                                          className='info'>
+                                                        <span className='arrow'><i className="iconfont icon-bianji"></i> 编辑 <i className="iconfont icon-arrow-right"></i> </span>
+                                                    </Link>
+                                                </span>
                                             </div>
 
                                         </div>

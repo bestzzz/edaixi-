@@ -1,5 +1,5 @@
 import * as types from '../action-types'
-import {addAddress,addresses,deladdress,getOrder} from '../../api/index'
+import {addAddress,addresses,deladdress,getOrder,getAddress,getProduct,reviseAddress} from '../../api/index'
 import {push} from 'react-router-redux';
 
 export default {
@@ -16,9 +16,7 @@ export default {
     },
     addresses(userId){
         return function (dispatch,getState) {
-            console.log(userId);//''
             addresses(userId).then(result=>{
-                console.log(result);
                 dispatch({
                     type:types.ADDRESSES,
                     payload:result
@@ -44,6 +42,38 @@ export default {
                     type:types.GETORDER,
                     payload:result
                 })
+            })
+        }
+    },
+    getAddress(userId){
+        return function (dispatch,getState) {
+            getAddress(userId).then(result=>{
+                dispatch({
+                    type:types.GETADDRESS,
+                    payload:result
+                })
+            })
+        }
+    },
+    getProduct(id){
+        return function (dispatch,getState) {
+            getProduct(id).then(result=>{
+                dispatch({
+                    type:types.GETPRODUCT,
+                    payload:result
+                })
+            })
+        }
+    },
+    reviseAddress(user){
+        return function (dispatch,getState) {
+            reviseAddress(user).then(result=>{
+                let users=result.filter((item)=>item.userId==user.userId?item:'')
+                dispatch({
+                    type:types.REVISEADDRESS,
+                    payload:result
+                })
+                dispatch(push('/address'))
             })
         }
     }

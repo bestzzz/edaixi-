@@ -81,7 +81,8 @@ app.get('/comments', function (req, res) {
     limit=parseInt(limit)||5;
     read('./mock/comments.json', function (comments) {
         let hasMore = limit + offset < JSON.parse(comments).length;
-        let coms = JSON.parse(comments).slice(offset, offset + limit);
+        comments=JSON.parse(comments).sort((a,b)=>{b.time-a.time});
+        let coms = comments.slice(offset, offset + limit);
         res.json({coms, hasMore});
     })
 });
@@ -233,6 +234,7 @@ app.post('/address', function (req, res) {
     let address = req.body;
     let url = './mock/adresses.json';
     read(url, function (adresses) {
+        console.log(address,11);
         adresses = JSON.parse(adresses);
         address.ID = adresses.length > 0 ? adresses[adresses.length - 1].ID + 1 : 1;
         address.time = new Date;
@@ -247,8 +249,9 @@ app.put('/address', function (req, res) {
     let address = req.body;
     let url = './mock/adresses.json';
     read(url, function (adresses) {
+        console.log(address,22);
         adresses = JSON.parse(adresses);
-        adresses =address.map(item=>(item.ID==address.ID?address:item))
+        adresses =adresses.map(item=>(item.ID==address.ID?address:item))
         write(url, adresses, function () {
             res.json(address);
         })
@@ -260,7 +263,8 @@ app.delete('/address', function (req, res) {
     let url = './mock/adresses.json';
     read(url, function (adresses) {
         adresses = JSON.parse(adresses);
-        adresses = adresses.filter(item => item.ID !== parseInt(id)?item:null)
+        console.log(id);
+        adresses = adresses.filter(item => item.ID != parseInt(id))
         write(url, adresses, function () {
             res.json(adresses);
         })

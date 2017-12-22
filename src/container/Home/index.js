@@ -7,7 +7,10 @@ import HomeCare from "./HomeCare/index";
 import HomeComment from "./HomeComment/index";
 export default class Home extends Component{
     componentDidMount(){
-        this.downRefresh(this.content)
+        this.downRefresh(this.content);
+        setTimeout(()=>{
+            this.guanggao.style.display='none';
+        },8000)
     }
     downRefresh=(dom) =>{
         let startY;
@@ -46,6 +49,7 @@ export default class Home extends Component{
     render(){
         return (
                 <div ref={content=>this.content=content} className="main">
+                    <div className="guanggao" ref={guanggao=>this.guanggao=guanggao}><img src={require('../../../img/20171223055758.jpg')}/></div>
                     <div className="logo"></div>
                     <HomeSwiper/>
                     <HomeClean/>

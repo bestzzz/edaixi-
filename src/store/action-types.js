@@ -21,11 +21,6 @@ export const CLEAR_MESSAGES='CLEAR_MESSAGES';
 //验证是否登录
 export const VALIDATE='VALIDATE';
 
-
-//加入购物车
-export const ADD_CART='ADD_CART'
-
-
 //增加地址
 export const ADD_ADDRESS='ADD_ADDRESS';
 
@@ -41,4 +36,6 @@ export const UPLOADIMAGE='UPLOADIMAGE';
 ////获取某个用户的订单列表
 export const GETORDER='GETORDER';
 
+export const ADD_CART='ADD_CART';
 
+export const REVISEADDRESS='REVISEADDRESS'

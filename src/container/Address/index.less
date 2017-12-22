@@ -1,10 +1,7 @@
-
 .usual-address{
   width: 100%;
   position: absolute;
-
   left: 0;
-
   right: 0;
   padding-top: .7rem;
   background-color: #f3f7fa;
@@ -17,7 +14,10 @@
         padding: 0;
         #bg-info{
           background-color: #f06b54 !important;
-          font-size: .4rem;
+          font-size: .3rem;
+          .icon-lajitong{
+            font-size: .4rem;
+          }
         }
         .white{
           width: 100%;
@@ -29,12 +29,20 @@
             line-height: .6rem;
             float: right;
             position: relative;
+            display: flex;justify-content: center;
+            align-items: center;
+            align-content: center;
+            height: 100%;
+            span{
+              flex: 2;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+            }
             .click{
               font-size: small;
-
             }
             .info{
-
               span{
                 font-size: .25rem;
                 margin-right: 1rem;
@@ -44,16 +52,18 @@
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
-                margin-top: -.25rem;
-                color: #dadada;
+                color: #555;
                 width:2.6rem;
-                font-size: medium;
+                font-size: .22rem;
               }
               .arrow{
                 position: absolute;
-                font-size: .23rem;
+                font-size: .24rem;
                 top: .4rem;
                 right: -.73rem;
+                .iconfont{
+                  font-size: .2rem;
+                }
               }
             }
           }

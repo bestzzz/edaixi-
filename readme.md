@@ -160,3 +160,11 @@ export let order = (order) => {
    return axios.post('/order',order);
  };
 ```
+- 根据产品id获取产品详细信息
+```
+//根据产品id获取产品详细信息
+export let getProduct = (id) => {
+   return axios.get(`/product?id=${id}`);
+ };
+```
+

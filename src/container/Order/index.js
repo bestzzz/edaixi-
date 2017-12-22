@@ -12,18 +12,18 @@ class Order extends Component {
     constructor() {
         super();
         this.state = {
-            address: {name: '', tel: '', province: '', city: '', address1: ''},
+            address: {name: '', tel: '', province: '', city: '', address1: '', address2: ''},
             time: new Date(),
             isOpen: false,
             userId: '',
-            addressId:''
+            addressId: ''
         };
     }
 
     async componentDidMount() {
         this._isMounted = true;
         let {params: {id}} = this.props.match;
-        this.setState({addressId:id});
+        this.setState({addressId: id});
         if (id) {
             let address = await getAddress(id);
             this.setState({address});
@@ -33,11 +33,13 @@ class Order extends Component {
     async componentWillReceiveProps() {
         localStorage.getItem('login') ? null : this.props.history.push('/login');
         if (this._isMounted && this.props.session.user && this.props.session.user.userId) {
-            if(!this.state.addressId)
-            {
-                this.setState({userId: this.props.session.user.userId})
+            this.setState({userId: this.props.session.user.userId})
+            if (!this.state.addressId) {
                 let address = await addresses(this.props.session.user.userId);
-                this.setState({address: address[0]});
+                console.log(address);
+                if (address.length) {
+                    this.setState({address: address[0]});
+                }
             }
             if (localStorage.getItem('cart') && this.props.cart.cart.length == 0) {
                 this.props.addCart(JSON.parse(localStorage.getItem('cart')), localStorage.getItem('sumPrice'));
@@ -85,17 +87,18 @@ class Order extends Component {
     }
 
     render() {
+        console.log(this.state.address);
         return (
             <div className="box">
                 <div className="pickUp">预约取件</div>
                 <form method='POST' onSubmit={this.handleSubmit}>
                     <Link to="/address">
                         <div className="con">
-                            <span className="name">{this.state.address.name}</span>
-                            <span className="tel">{this.state.address.tel}</span>
-                            <span
+                                <span className="name">{this.state.address.name}</span>
+                                <span className = "tel"> {this.state.address.tel}</span>
+                                <span
                                 className="address">{this.state.address.province + this.state.address.city + this.state.address.address1 + this.state.address.address2}</span>
-                            <i className="iconfont icon-jiantouyou">&gt;</i>
+                            <span className="updateAddress">添加/修改地址<i className="iconfont icon-jiantouyou"></i></span>
                         </div>
                     </Link>
                     <div className="choose">

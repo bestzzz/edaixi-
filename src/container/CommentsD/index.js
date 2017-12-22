@@ -23,18 +23,21 @@ render() {
                                 <ul key={index}>
                                     <li className="title" >{item.tel.substring(0,3)+'****'+item.tel.substring(6)}</li>
                                     <li className="comment">{item.content}</li>
-                                    <li className="sub">{item.typeId}</li>
-                                    <li className="sub">{item.time}</li>
+                                    <li className="sub">{item.typeId == 1 ? '洗护质量' : item.typeId == 2 ? '服务态度' : item.typeId == 3 ? '物流速度' : item.typeId == 4 ? '产品易用性' : item.typeId == 5 ? '付款流程' : '其他'}{' ' + item.time.substring(0,10)}</li>
+                                    <li className="sub"></li>
                                 </ul>
                             ))
                         }
-                        {/*this.props.coms.filter(item => item.typeId == this.props.match.params.typeId).map((item, index) => (
-                        <ul key={index}>
-                            <li className="title">{item.tel}</li>
-                            <li className="comment">{item.content}</li>
-                            <li className="sub">{item.time}</li>
-                        </ul>
-                        ))*/}
+                        {/*{
+                            this.props.coms.filter(item => item.typeId == this.props.match.params.typeId).map((item, index) => {
+                                console.log(item);
+                                return <ul key={index}>
+                                    <li className="title">{item.tel}</li>
+                                    <li className="comment">{item.content}</li>
+                                    <li className="sub">{item.time}</li>
+                                </ul>
+                            })
+                        }*/}
                     </div>
                 </div>
             </div>

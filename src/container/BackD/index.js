@@ -75,6 +75,7 @@ class BackD extends Component {
                     <p>（周一到周日 8:30-22:00）</p>
                     <p>您也可以在微信搜索“e袋洗”官方公众号与我们服务</p>
                 </div>
+                <Tab/>
             </div>
         )
     }

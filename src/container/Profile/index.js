@@ -15,23 +15,25 @@ class Profile extends Component {
         this.props.logout()
     };
     uploadImge = (img) => {
-         this.setState({img:img.img})
+        sessionStorage.setItem('img',img.img)
+        console.log(sessionStorage.getItem('img')?1:2);
+        this.setState({img:img.img});
         //this.props.uploadImge({userid:this.props.user.userId,...img});
     }
-    render() {
+    render(){
+
         return (
             <div className='profile-content'>
                 <div className="profile-header">
-                    <div className='profile-name'>
-                        <UploadImg uploadImge={this.uploadImge}/>
-                        <img src={this.state.img} alt=""/>
-                        <div className='name'>
-                            {
-                                this.props.user ? <h2>{this.props.user.username}</h2> :
-                                    <h2><Link to='/login'> 登录 </Link></h2>
-                            }
-                            <p>让生活多份自在</p>
-                        </div>
+                 <div className='profile-name'>
+                     <UploadImg uploadImge={this.uploadImge} onClick={this.uploadImge}/>
+                     <img src={sessionStorage.getItem('img')?sessionStorage.getItem('img'):this.state.img} alt=""/>
+                     <div className='name'>
+                         {
+                             this.props.user?<h2>{this.props.user.username}</h2>:<h2><Link to='/login'> 登录 </Link></h2>
+                         }
+                         <p>让生活多份自在</p>
+                     </div>
 
                     </div>
                     {
@@ -42,21 +44,21 @@ class Profile extends Component {
                     <div className='address'>
                         <img src={require('../../images/address.jpg')} alt=""/>
                         <span><Link to={{pathname: '/address'}}>常用地址</Link></span>
-                        <span className='arrow'> > </span>
+                        <span className='arrow'> <i className="iconfont icon-jiantouyou"></i>  </span>
                     </div>
                 </div>
                 <div className="white-advice">
                     <div className='advice'>
                         <img src={require('../../images/advice.jpg')} alt=""/>
                         <span className='fade'><Link to='/back'>评价</Link></span>
-                        <span className='arrow'> > </span>
+                        <span className='arrow'> <i className="iconfont icon-jiantouyou"></i>  </span>
                     </div>
                 </div>
                 <div className="white-order">
                     <div className='order'>
                         <img src={require('../../images/order.jpg')} alt=""/>
-                        <span className='fade'><Link to='/getorder'>获取订单</Link></span>
-                        <span className='arrow'> > </span>
+                        <span className='fade'><Link to='/getorder'>我的订单</Link></span>
+                        <span className='arrow'> <i className="iconfont icon-jiantouyou"></i> </span>
                     </div>
                 </div>
 
