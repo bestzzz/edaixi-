@@ -246,7 +246,7 @@ app.delete('/address', function (req, res) {
         adresses = JSON.parse(adresses);
         adresses = adresses.filter(item => item.ID !== parseInt(id)?item:null)
         write(url, adresses, function () {
-            res.json(address);
+            res.json(adresses);
         })
     })
 });

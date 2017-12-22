@@ -13,9 +13,12 @@ import Order from "./container/Order";
 import Reg from "./container/Reg/index";
 import Address from "./container/Address/index";
 import AddAddress from "./container/AddAddress/index";
+import ProtectRoute from './ProtectRoute';
 import Comments from "./container/CommentsD/index";
 import List from './container/List';
-import ProtectRoute from './ProtectRoute';
+import GetOrder from "./container/GetOrder/index";
+
+
 
 
 export default class App extends Component{
@@ -24,7 +27,6 @@ export default class App extends Component{
             <ConnectedRouter history={history}>
                 <div>
                     <Tab/>
-
                     <Route exact  path="/" component={Home}/>
                     <Route path='/list' component={List}/>
                     <Route path="/profile" component={Profile}/>
@@ -35,6 +37,7 @@ export default class App extends Component{
                     <Route path="/order" component={Order}/>
                     <ProtectRoute path="/address" component={Address}/>
                     <ProtectRoute path="/addadress" component={AddAddress}/>
+                    <ProtectRoute path="/getorder" component={GetOrder}/>
                 </div>
             </ConnectedRouter>
         )

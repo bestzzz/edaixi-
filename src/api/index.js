@@ -55,13 +55,16 @@ export let addresses = (userid) => {
 
 //删除某个地址
 export let deladdress = (id) => {
-
     return axios.delete(`/address?id=${id}`);
 };
 
 //上传头像
 export let uploadImge = (user) => {
-    return axios.post('/uploadImge',user);
+    return axios.post('/uploadImge',user);}
+
+//获取某个用户的订单列表
+export let getOrder = (userid) => {
+return axios.get(`/orders?userid=${userid}`);
 };
 
 //增加一个订单
