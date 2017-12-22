@@ -66,3 +66,18 @@ export let uploadImge = (user) => {
 export let getOrder = (userid) => {
 return axios.get(`/orders?userid=${userid}`);
 };
+
+//根据产品id获取产品详细信息
+export let getProduct = (id) => {
+    return axios.get(`/product?id=${id}`);
+};
+
+//获取某个订单关联的地址
+export let getAddress = (addressid) => {
+    return axios.get(`/address?addressid=${addressid}`);
+};
+
+//修改某个地址
+export let reviseAddress=(user)=>{
+    return axios.put('/address',user)
+};

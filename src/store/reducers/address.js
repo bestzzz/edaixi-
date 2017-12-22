@@ -2,7 +2,7 @@ import * as types from '../action-types'
 
 let initState={
     users:[{ID:''}],
-    orders:[]
+    orders:[{addressId:''}]
 };
 
 export default function (state=initState,action) {
@@ -26,6 +26,21 @@ export default function (state=initState,action) {
             return{
                 ...state,
                 orders:action.payload
+            };
+        case types.GETADDRESS:
+            return{
+                ...state,
+                orderAddress:action.payload
+            };
+        case types.GETPRODUCT:
+            return{
+                ...state,
+                products:action.payload
+            };
+        case types.REVISEADDRESS:
+            return{
+                ...state,
+                users:action.payload
             };
         default:
             return state

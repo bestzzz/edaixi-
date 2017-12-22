@@ -36,3 +36,12 @@ export const UPLOADIMAGE='UPLOADIMAGE';
 ////获取某个用户的订单列表
 export const GETORDER='GETORDER';
 
+//根据产品id获取产品详细信息
+export const GETPRODUCT='GETPRODUCT';
+
+////获取某个订单关联的地址
+export const GETADDRESS='GETADDRESS';
+
+////修改某个地址
+export const REVISEADDRESS='REVISEADDRESS';
+

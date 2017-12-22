@@ -23,20 +23,6 @@ async function write(url, result, cb) {
 //处理base64图片
 let reg = /^data:image\/\w+;base64,/;
 
-function changeToJpg(imgData) {
-    let base64Data = imgData.replace(reg, ""),
-        dataBuffer = new Buffer(base64Data, 'base64'),
-        name = '../img/' + Math.floor(Math.random() * 9000000 + 1000000) + '.jpg';  //生成一个随机数 做图片的名字并存放到img文件夹下
-
-    writeFileFn(name, dataBuffer, (err) => {
-        if (err) {
-            throw err;
-        }
-    });
-
-    return name;
-}
-
 let session = require('express-session');
 app.use(session({
     resave: true,
@@ -152,21 +138,26 @@ app.post('/login', function (req, res) {
 //上传头像
 app.post("/uploadImge", (req, res) => {
     let {userid, img} = req.body;
-    let imgName = changeToJpg(img);
-    let url = './mock/users.json';
-    read(url, function (users) {
-        users = JSON.parse(users);
-        let user = users.find(item => item.userId == userid);
-        //如果之前user.img有值，则从文件夹中删除这张图片
-        if (user.img.length) {
-            fs.unlinkSync(user.img);
-        }
-        user.img = imgName;
-        users = users.map(item => item.userId == userid ? user : item);
-        write(url, users, function () {
-            res.json({code: 0,user})
+    let base64Data = img.replace(reg, ""),
+        dataBuffer = new Buffer(base64Data, 'base64'),
+        imgName = '../img/' + Math.floor(Math.random() * 9000000 + 1000000) + '.jpg';  //生成一个随机数 做图片的名字并存放到img文件夹下
+    write(imgName, dataBuffer,function () {
+        let url = './mock/users.json';
+        read(url, function (users) {
+            users = JSON.parse(users);
+            let user = users.find(item => item.userId == userid);
+            //如果之前user.img有值，则从文件夹中删除这张图片
+            if (user.img) {
+                fs.unlinkSync(user.img);
+            }
+            user.img = imgName;
+            users = users.map(item => item.userId == userid ? user : item);
+            write(url, users, function () {
+                res.json({code: 0,user})
+            })
         })
-    })
+    });
+
 });
 //当应用初始化的时候，会向后台发送一个请求，询问当前用户是否登录，如果登录的话则返回登录的用户并存放在仓库里。
 app.get('/validate', function (req, res) {
@@ -196,7 +187,7 @@ app.post('/order', function (req, res) {
     let url = './mock/orderList.json';
     read(url, function (orders) {
         orders = JSON.parse(orders);
-        order.ID = orders.length > 0 ? orders[orders.length - 1].orderId + 1 : 1;
+        order.ID = orders.length > 0 ? orders[orders.length - 1].ID + 1 : 1;
         order.time = new Date;
         orders = [...orders, order];
         write(url, orders, function () {
@@ -245,6 +236,26 @@ app.delete('/address', function (req, res) {
     read(url, function (adresses) {
         adresses = JSON.parse(adresses);
         adresses = adresses.filter(item => item.ID !== parseInt(id)?item:null)
+        write(url, adresses, function () {
+            res.json(adresses);
+        })
+    })
+});
+
+//根据产品id获取产品详细信息
+app.get('/product', function (req, res) {
+    let {proid} = req.query;
+    res.json(products.find(item => item.productID == proid));
+});
+
+//修改一个地址
+app.put('/address', function (req, res) {
+    let address = req.body;
+    let url = './mock/adresses.json';
+    read(url, function (adresses) {
+        adresses = JSON.parse(adresses);
+        console.log(address);
+        adresses =adresses.map(item=>(item.ID==address.ID?address:item))
         write(url, adresses, function () {
             res.json(adresses);
         })

@@ -10,13 +10,16 @@ class Profile extends Component{
         localStorage.removeItem('login');
         this.props.logout()
     };
+    uploadImge = (img) => {
+        this.props.uploadImge({userid:this.props.user.userId,...img});
+    };
     render(){
-        console.log(this.props);
+
         return (
             <div className='profile-content'>
                 <div className="profile-header">
                  <div className='profile-name'>
-                     <UploadImg uploadImge={this.props.uploadImge}/>
+                     <UploadImg uploadImge={this.uploadImge} onClick={this.uploadImge}/>
                      <img src={require('../../images/xiang.jpg')} alt=""/>
                      <div className='name'>
                          {

@@ -17,11 +17,12 @@ class AddAddress extends Component {
         let name=this.name.value;
         let sex=this.male.checked?'男':'女';
         let tel=this.tel.value;
-        this.props.addAddress({userId,province,city,address1,address2,name,sex,tel})
+        let reg=/^\/addadress\/(\d+)$/;
+        let num=reg.exec(this.props.router.location.pathname)[1];
+        this.props.router.location.pathname=='/addadress'?this.props.addAddress({userId,province,city,address1,address2,name,sex,tel}):this.props.reviseAddress({userId,province,city,address1,address2,name,sex,tel,ID:num})
     };
     render() {
         let item=this.props.location.state?this.props.location.state.item:{userId:'',province:'',city:'',address1:'',address2:'',name:'',sex:'男',tel:''};
-        console.log(item);
         return (
             <div>
                 <NavHeader title='填写地址' show={true}/>

@@ -8,7 +8,6 @@ import ListSwipe from 'react-list-swipe';
 import {withRouter} from 'react-router-dom'
 class Address extends Component {
     componentDidMount(){
-        console.log(this.props.session.user);
         this.props.addresses(this.props.session.user.userId)
     }
 
