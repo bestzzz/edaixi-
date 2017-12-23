@@ -23,11 +23,21 @@ module.exports = {
                 exclude: /node_modules/,
                 query: {
                     "presets": [
-                        "env", "react"
+                        "env", "react",
+
                     ],
                     "plugins": [
                         "transform-object-rest-spread",
-                        "transform-class-properties"
+                        "transform-class-properties",
+                        [
+                            'transform-runtime',
+                            {
+                                'helpers':false,
+                                'polyfill':false,
+                                'regenerator':true,
+                                'moduleName':'babel-runtime'
+                            }
+                        ]
                     ]
                 }
             },

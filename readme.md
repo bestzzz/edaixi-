@@ -86,8 +86,8 @@ export let validate = () => {
 ```
 - 上传头像
 ```
-export let uploadImge = () => {
-   return axios.post('/uploadImge');
+export let uploadImge = (user) => {
+   return axios.post('/uploadImge',user);
  };
  返回：{code: 0}上传成功
 ```
@@ -146,7 +146,7 @@ export let adresses = (userid) => {
 ```
 - 获取某个订单关联的地址
 ```
-export let address = (addressid) => {
+export let getAddress = (addressid) => {
    return axios.get(`/address?addressid=${addressid}`);
  };
  返回内容是一个对象：
@@ -160,3 +160,11 @@ export let order = (order) => {
    return axios.post('/order',order);
  };
 ```
+- 根据产品id获取产品详细信息
+```
+//根据产品id获取产品详细信息
+export let getProduct = (id) => {
+   return axios.get(`/product?id=${id}`);
+ };
+```
+
