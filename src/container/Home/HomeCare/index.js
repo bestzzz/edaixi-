@@ -9,14 +9,14 @@ export default class HomeCare extends Component{
             <div className="home-care">
               <p className="care">- 高 端 洗 护 -</p>
                 <div className="care-titles">
-                    <Link to='/list/1' className="care-title">
+                    <span className="care-title">
                         <span className="title">奢饰品养护</span>
                         <img className="title-care" src={HomeCareImg[0]} alt=""/>
-                    </Link>
-                    <Link to='/list/2' className="care-title">
+                    </span>
+                    <span to='/list/2' className="care-title">
                         <span className="title">高端成衣家纺</span>
                         <img className="title-care" src={HomeCareImg[1]} alt=""/>
-                    </Link>
+                    </span>
                 </div>
             </div>
         )

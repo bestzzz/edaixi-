@@ -79,6 +79,7 @@ class TypeTwoCom extends Component {
     }
     clear = () => {
         localStorage.removeItem('cart');
+        localStorage.removeItem('cartLocal');
         this.setState({cart: []});
         this.cartAll.style.display = 'none';
     }

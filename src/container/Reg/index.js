@@ -19,7 +19,7 @@ class Reg extends Component{
                     <img src={require('../../images/xiang.jpg')} alt=""/>
                 </div>
                 <input type="text" ref={input=>this.username=input} placeholder='请输入用户名'/>
-                <input type="text" ref={input=>this.password=input} placeholder='请输入密码'/>
+                <input type="password" ref={input=>this.password=input} placeholder='请输入密码'/>
                 <Link to='/login'>前往登录</Link>
                 <div className='reg-btn' onClick={this.handleClick}>注&nbsp;册</div>
                 <Alert/>
